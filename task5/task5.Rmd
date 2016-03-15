@@ -1,0 +1,47 @@
+---
+title: "Task 5"
+author: "Kornelijus Samsonas"
+output: html_document
+---
+* **Užduotis:** Pinigų paklausa. Šioje užduotyje reikia atlikti tiesinę regresiją. Pakete dynlm yra duomenų masyvas M1Germany - ten yra ir jo aprašymas. Iš turimų duomenų sudarykite ir įvertinkite tiesinę regresiją, kurios endoneninis kintamasis yra logm1. Lygtis būtų naudojama prognozuoti pinigų kiekį artimiausiam laikotarpiui į prieki remiantis dabartine situacija. Taigi prognozės sudarymui lygtis gali naudoti tik tuos duomenis, kurie būtų žinomi prognozavimo momentu.
+
+```{r,message=FALSE}
+library(dynlm)
+#Duomenys:
+M1Germany
+```
+
+```{r,echo=FALSE}
+plot(M1Germany)
+```
+
+```{r}
+# Kuriame modelius
+a<-dynlm((logm1)~L(logprice,3)+(L(loggnp, 2))+(L(interest,2)) , data = M1Germany, start = c(1960, 1), end= c(1996,3 )) 
+b<-dynlm((logm1)~L(logprice,1)+(L(interest,3)) , data = M1Germany, start = c(1960, 1), end= c(1996,3 )) 
+c<-dynlm((logm1)~L(logprice,3)+(L(loggnp, 2))+(L(interest,2)) , data = M1Germany, start = c(1960, 1), end= c(1996,3 ))
+d<-dynlm((logm1)~L(logprice,5)+(L(interest,5)) , data = M1Germany, start = c(1960, 1), end= c(1996,3 )) 
+e<-dynlm((logm1)~L(logprice,2)+(L(interest,1)) , data = M1Germany, start = c(1960, 1), end= c(1996,3 )) 
+f<-dynlm((logm1)~L(logprice,1)+(L(interest,1)) , data = M1Germany, start = c(1960, 1), end= c(1996,3 )) 
+
+
+#Paziūrėsime modelių apibendirimą.
+summary(a)
+summary(b)
+summary(c)
+summary(d)
+summary(e)
+summary(f)
+#Patome kad visi kintamieji reikšmingi.
+
+#Lyginsime modelius pagal AIC krijerijų.
+AIC(a)
+AIC(b)
+AIC(c)
+AIC(d)
+AIC(e)
+AIC(f)
+```
+
+* **Išvada:** Modelis e yra pats tiksliausias nes AIC mažiausias palyginus su kitais. Pašalinome loggnp kintamajį nes jis būdavo nereikšmingas arba mažiausiai reikšmingas.
+
