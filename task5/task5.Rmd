@@ -9,29 +9,35 @@ output: html_document
 library(dynlm)
 #Duomenys:
 M1Germany
+
 ```
 
 ```{r,echo=FALSE}
 plot(M1Germany)
 ```
 
+* Žiūredami į grafika galime teigti, kad išskirčių nėra. Bet yra trendas.
+
+* Sukursime kelis modelius ir bandysime išsirinkti geriausia.
 ```{r}
 # Kuriame modelius
-a<-dynlm((logm1)~L(logprice,3)+(L(loggnp, 2))+(L(interest,2)) , data = M1Germany, start = c(1960, 1), end= c(1996,3 )) 
-b<-dynlm((logm1)~L(logprice,1)+(L(interest,3)) , data = M1Germany, start = c(1960, 1), end= c(1996,3 )) 
-c<-dynlm((logm1)~L(logprice,3)+(L(loggnp, 2))+(L(interest,2)) , data = M1Germany, start = c(1960, 1), end= c(1996,3 ))
-d<-dynlm((logm1)~L(logprice,5)+(L(interest,5)) , data = M1Germany, start = c(1960, 1), end= c(1996,3 )) 
-e<-dynlm((logm1)~L(logprice,2)+(L(interest,1)) , data = M1Germany, start = c(1960, 1), end= c(1996,3 )) 
-f<-dynlm((logm1)~L(logprice,1)+(L(interest,1)) , data = M1Germany, start = c(1960, 1), end= c(1996,3 )) 
-
+ 
+a<-dynlm((logm1)~L(logprice,3)+(d(L(loggnp, 2)))+(L(interest,2)) , data = M1Germany, start = c(1960, 1), end= c(1996,3 ))
+b<-dynlm((logm1)~L(logprice,4)+(d(L(loggnp, 4)))+(L(interest,4)) , data = M1Germany, start = c(1960, 1), end= c(1996,3 ))
+c<-dynlm((logm1)~L(logprice,4)+(L(loggnp, 4))+(L(interest,4)) , data = M1Germany, start = c(1960, 1), end= c(1996,3 ))
+d<-dynlm((logm1)~L(logprice,2)+(d(L(loggnp, 2)))+(L(interest,2)) , data = M1Germany, start = c(1960, 1), end= c(1996,3 ))
+library(car)
+vif(a)
+vif(b)
+vif(c)
+vif(d)
+#Tik c modelis yra multi koliearus nes kituose modeliuose naudojame longgnp skirtuma, kad pasalintume trenda.
 
 #Paziūrėsime modelių apibendirimą.
 summary(a)
 summary(b)
 summary(c)
 summary(d)
-summary(e)
-summary(f)
 #Patome kad visi kintamieji reikšmingi.
 
 #Lyginsime modelius pagal AIC krijerijų.
@@ -39,9 +45,17 @@ AIC(a)
 AIC(b)
 AIC(c)
 AIC(d)
-AIC(e)
-AIC(f)
+#AIC maziausia yra modelio b todel jis tiksliausias
 ```
 
-* **Išvada:** Modelis e yra pats tiksliausias nes AIC mažiausias palyginus su kitais. Pašalinome loggnp kintamajį nes jis būdavo nereikšmingas arba mažiausiai reikšmingas.
+* Nusibreziame histogramą.
+```{r}
+hist(resid(b), probability = TRUE)
+lines(density(resid(b)), col = "red")
 
+res<-as.vector(b$residuals)
+shapiro.test(res) # p-value>0.05 todel priimame H0, galimei teigti, liekanos normalios.
+```
+* Matome kad modelio b liekanos yra normalios
+
+* **Išvada:** Modelis b yra pats tiksliausias nes AIC mažiausias palyginus su kitais. 
