@@ -38,7 +38,7 @@ Grafike esanti prognozė nelabai tiksli, ji labiausiai atsižvelgia į ilgai vyk
 ```{r}
 plot(data,xlim=c(0,90),main="Dowjones duomenu grafikas", xlab="Laikas",ylab="Duomenys",lwd="3",col="2") 
 lines(rwf(data,drift=TRUE,h=20)$mean,col=5,lwd="3")
-legend("topleft",lty=1,lwd="2",col=c(5,3),legend=c("Drift metodas","Tiese per pradžia ir pabaigą"))
+legend("topleft",lty=1,lwd="2",col=c(5,3),legend=c("Drift metodas","Tiese per pradzia ir pabaiga"))
 x1=1
 x2=78
 y1<-dowjones[1] #1st observation 
