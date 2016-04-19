@@ -47,5 +47,4 @@ Box.test(fit1$res, fitdf=0, type="Lj")
 Box.test(fit4$res, fitdf=0, type="Lj")
 ```
 
-Abu yra baltieji triukšmai
-
+Pagal box test matome, kad abi prognozes yra baltasis triukšmas nes p-value > 0.05.
