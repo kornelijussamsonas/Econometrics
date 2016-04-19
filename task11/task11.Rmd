@@ -18,6 +18,7 @@ fcast1 <- forecast(fit1, h=100)
 plot(fcast1)
 ```
 
+Rekomenduojama prognozė pagal Ets
 
 ```{r}
 fit4 <- holt(data, h=100, damped = TRUE, exponential = TRUE,alpha=0.8,beta=0.001)
@@ -25,7 +26,7 @@ plot(fit4)
 
 ```
 
-Geriausias modelis iš task10.1
+Geriausias prognozinis modelis iš task10.1
 
 ```{r}
 accuracy(fit1)
