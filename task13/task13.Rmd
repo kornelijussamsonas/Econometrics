@@ -1,0 +1,79 @@
+---
+title: "Task 13"
+author: "Kornelijus Samsonas"
+output: html_document
+---
+
+* **1 Užduotis:** For the following series, find an appropriate Box-Cox transformation and order of differencing in order to obtain stationary data.
+(A) usnetelec
+(B) usgdp
+(C) mcopper
+(D) enplanements 
+(E) visitors
+
+
+```{r,message=FALSE}
+library(fpp)
+```
+
+
+* **A:**  usnetelec
+
+```{r}
+lemda1<-BoxCox.lambda(usnetelec) #transformacijos lambda
+n1<-ndiffs(usnetelec) # diferenciavimo eilė
+plot(usnetelec) # originalūs duomenys.
+plot(BoxCox(diff(usnetelec,differences = n1),lambda = lemda1),col=2) #panaudota boxcox tranformacija ir diferenciavimas
+```
+
+* **B:**  usgdp
+
+```{r}
+lemda2<-BoxCox.lambda(usgdp) #transformacijos lambda
+n2<-ndiffs(usgdp) # diferenciavimo eilė
+plot(usgdp) # originalūs duomenys.
+plot(BoxCox(diff(usgdp,differences = n2),lambda = lemda2),col=3) #panaudota boxcox tranformacija ir diferenciavimas
+```
+
+* **C:**  mcopper
+
+```{r}
+lemda3<-BoxCox.lambda(mcopper) #transformacijos lambda
+n3<-ndiffs(mcopper) # diferenciavimo eilė
+plot(mcopper) # originalūs duomenys.
+plot(BoxCox(diff(mcopper,differences = n3),lambda = lemda3),col=4) #panaudota boxcox tranformacija ir diferenciavimas
+```
+
+* **D:**  enplanements
+
+```{r}
+lemda4<-BoxCox.lambda(enplanements) #transformacijos lambda
+n4<-ndiffs(enplanements) # diferenciavimo eilė
+plot(enplanements) # originalūs duomenys.
+plot(BoxCox(diff(enplanements,differences = n4),lambda = -lemda4),col=5) #panaudota boxcox tranformacija ir diferenciavimas ???KAIP DEL MINUSOO???
+```
+
+* **E:** visitors
+
+```{r}
+lemda5<-BoxCox.lambda(visitors) #transformacijos lambda
+n5<-ndiffs(visitors) # diferenciavimo eilė
+plot(visitors) # originalūs duomenys.
+plot(BoxCox(diff(visitors,differences = n5),lambda = lemda5),col=6) #panaudota boxcox tranformacija ir diferenciavimas
+```
+
+* **Išvados:** Box-cox transformacija ir difernciavimas duomenis padaro stacionarius. Taip pat pritaikius Box-cox transformaciją ir difernciavimą duomenyse stebimas pokytis, o ne bendras duomenų kitimas laike.
+
+_____________
+* **2 Užduotis:** Why is a Box-Cox transformation unhelpful for the cangas data?
+
+```{r}
+lemda6<-BoxCox.lambda(cangas) #transformacijos lambda
+n6<-ndiffs(cangas) # diferenciavimo eilė
+plot(cangas) # originalūs duomenys.
+plot(BoxCox(cangas,lambda = lemda6),col=7) #panaudota boxcox tranformacija ir diferenciavimas
+```
+
+_____________
+
+* **3 Užduotis:** Download the data at http://robjhyndman.com/data/retail.xls. Choose one of the series and find an appropriate Box-Cox transformation and order of differencing in order to obtain stationary data.
