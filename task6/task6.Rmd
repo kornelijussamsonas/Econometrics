@@ -67,4 +67,4 @@ lines(rwf(data,drift=TRUE,h=20)$mean,col=5,lwd="3")
 legend("topleft",lty=1,lwd="3",col=c(3,4,5),legend=c("Mean metodas","Naive metodas","Drift metodas"))
 ```
 
-Naive metodo prognozė šiuo atvėju tiktų labiausiai, bent jau trumpuoju laikotarpiu, nes atsižvelgiama į paskutinį periodo tašką. Mean metodo prognozė mažai tikėtina dėl prognozuojamo staigaus kritimo. Drift metodas daugiausiai atsižvelgia į ilgą laiką buvusį kylimą smargiai ignoruodamas paskutiniu laikotarpių buvusį kritimą.
+Naive metodo prognozė šiuo atvėju tiktų labiausiai, bent jau trumpuoju laikotarpiu, nes atsižvelgiama į paskutinį periodo tašką. Mean metodo prognozė mažai tikėtina dėl prognozuojamo staigaus kritimo. Drift metodas daugiausiai atsižvelgia į ilgą laiką buvusį kylimą smargiai ignoruodamas paskutiniu laikotarpių buvusį kritimą..
