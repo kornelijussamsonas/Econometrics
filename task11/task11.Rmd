@@ -33,7 +33,7 @@ accuracy(fit1)
 accuracy(fit4)
 ```
 
-Pagal RMSE matome, kad tikslesnis modelis yra fit4 
+Pagal RMSE matome, kad tikslesnis modelis yra fit4. 
 
 ```{r}
 Acf(fit1$res)
