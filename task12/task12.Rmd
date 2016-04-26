@@ -90,14 +90,11 @@ abline(0,0,col=2)
 plot(visitors)
 ```
 
-Paklaidų grafike matome, kad paklaidų sklaida begant laikui auga. Tai gali būti dėl to, kad prognozės pokyčiai atsilieka nuo realiu duomenų pokyčio. Kaip matome grafike duomenų kitimo intervalas didėja begant laikui (labiau šokinėja) todėl ir auga paklaidos.
+Paklaidų grafike matome, kad paklaidų sklaida begant laikui auga (didėja atstumas nuo 0). Tai gali būti dėl to, duomenų sklaida irgi auga. Kaip matome grafike duomenų kitimo intervalas didėja begant laikui (labiau šokinėja) todėl ir auga paklaidos.
 
 * **E:** How does this problem bias the comparison of the RMSE values from (1a) and (1b)? (Hint: think about the effect of the missing values in e.)
 
-```{r}
-
-```
-
+A dalyje prognozė atliekama su training setu, kuris sudaro 80% duomenų ir prognozuojamas trumpesnis laikotarpis todėl galime manyti, kad paklaidos bus mažesnės nei B dalyje kur training setas prasideda nuo 48 duomenų ir prognozė atliekama labai ilgam laikotarpiui todėl paklaidos išauga Todėl RMSE A dalyje yra geresnis.
 
 * **F:** In practice, we will not know that the best model on the whole data set is ETS(M,A,M) until we observe all the data. So a more realistic analysis would be to allow ets to select a different model each time through the loop. Calculate the RMSE using this approach. (Warning: it will take a while as there are a lot of models to fit.)
 
@@ -107,7 +104,7 @@ n3 <- length(visitors) # Total number of observations
 e3 <- visitors*NA # Vector to record one-step forecast errors
 for(i in 48:(n3-1))
   {train3 <- ts(visitors[1:i],freq=12)
-   fit3 <- ets(train3, damped=FALSE)
+   fit3 <- ets(train3)
    fc3 <- forecast(fit3,h=1)$mean
    e3[i] <- visitors[i+1]-fc3
   }
@@ -123,5 +120,5 @@ Frmse # F dalies RMSE
 Brmse # B dalies RMSE
 ```
 
-B ir F varianto RMSE skiriasi nežiankliai todėl neverta kiekvieną kartą perrinkinėti modelį nes tai užtrunka daug laiko.
+B dalies RMSE mažesnis todėl prognozė tikslesnė. B ir F varianto RMSE skiriasi nežiankliai todėl neverta kiekvieną kartą perrinkinėti modelį nes tai užtrunka daug laiko.
 
