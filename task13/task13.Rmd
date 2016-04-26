@@ -73,14 +73,14 @@ n6<-ndiffs(cangas) # diferenciavimo eilė
 plot(cangas) # originalūs duomenys.
 plot(BoxCox(cangas,lambda = lemda6),col=2) #panaudota boxcox tranformacija ir diferenciavimas
 hist(BoxCox(cangas,lambda = lemda6)) #duomenys po tranformacijos netampa normalūs.
-
 ```
 
+Box-Cox transformacija cangas duomenims nenaudingi nes  pradžioje ir pabaigoje svyravimai yra panašūs, o viduryje svyravimai padidėja. Todėl funkcijai nėra prasmės naudoti kokią nors transformaciją nes negali duomenų padaryti reguliaresniais.
 _____________
 
 * **3 Užduotis:** Download the data at http://robjhyndman.com/data/retail.xls. Choose one of the series and find an appropriate Box-Cox transformation and order of differencing in order to obtain stationary data.
 
-```{r,error=TRUE}
+```{r}
 datafull<-read.csv2("retail.csv",header = TRUE)
 duom<-datafull[,2]
 data<-ts(duom, frequency=12, start=c(1982,4))

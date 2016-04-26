@@ -34,11 +34,11 @@ fit1 <- hw(data, h=24, seasonal="multiplicative")
 plot(fit1)
 ```
 
-Prognozė labai panaši į duomenis.
+Prognozė labai panaši į duomenis. 
 
 * **C:** Why is multiplicative seasonality necessary here?
 
-Multiplykativus sezonas reikalingas dėl to, kad duomenyse einant laikui didėja skirtumai tarp sezonų (svyravimai auga).
+Multiplykativus sezonas reikalingas dėl to, kad duomenyse einant laikui didėja skirtumai tarp sezonų (svyravimai auga). T.y. didėjant reikšmėms didėja svyravimai.
 
 * **D:** Experiment with making the trend exponential and/or damped.
 
@@ -47,7 +47,7 @@ fit2 <- hw(data, h=24, seasonal="multiplicative", damped=TRUE)
 plot(fit2)
 ```
 
-Atliekant "damped" glodinimu pagrįsta prognozę ji netenka augimo trendo. 
+Atliekant "damped" glodinimu pagrįsta prognozę ji ilgainiui netenka augimo trendo. 
 Naudojant "exponential" glodinimu pagrįsta prognozę ji niekuo nesiskiria nuo pradinės. 
 Sujugus "exponential" ir "damped" glodinimu pagrįsta prognozę ji tiesiog netinka augimo trendo.
 Galima padaryti išvada , kad "exponential" glodinimu pagrįsta prognozė nieko naudingo mums nepateikia.

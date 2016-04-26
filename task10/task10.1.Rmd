@@ -20,7 +20,7 @@ fit2 <- holt(data, h=100, damped = TRUE,alpha = 0.005,beta = 0.004)
 plot(fit2)
 ```
 
-Grafike matome, kad naudojant "damped" prognozėje atsisakome ryškaus trendo esančio duomenyse. Parametras alpha glodina modelio duomenis, kuo didesnis alpha tuo prognozė yra labiau suglodinta. Parametras beta glodina alphos atlikta glodinima (gaunasmas dvigubas glodinimas).
+Grafike matome, kad naudojant "damped" prognozėje ilgainiui atsisakome ryškaus trendo esančio duomenyse. Parametras alpha glodina modelio duomenis, kuo didesnis alpha tuo prognozė yra labiau suglodinta. Parametras beta glodina alphos atlikta glodinima (gaunasmas dvigubas glodinimas).
 
 ```{r}
 fit3 <- holt(data, h=100, exponential = TRUE,alpha=0.9,beta=0.0005,initial = "simple")
@@ -36,7 +36,7 @@ plot(fit4)
 
 ```
 
-Grafike matome, kad naudojant "damped" prognozėje atsisakome ryškaus trendo duomenyse. Naudojant "exponiantial" prognozei prideda eksponentini trendą ir prognozei neleidžia pasiekti neigiamų reikšmių.
+Grafike matome, kad naudojant "damped" prognozėje ilgainiui atsisakome ryškaus trendo duomenyse. Naudojant "exponiantial" prognozei prideda eksponentini trendą ir prognozei neleidžia pasiekti neigiamų reikšmių.
 
 ```{r}
 accuracy(fit2)
