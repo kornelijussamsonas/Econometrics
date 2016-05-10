@@ -1,0 +1,108 @@
+---
+title: "Task 15"
+author: "Kornelijus Samsonas"
+output: html_document
+---
+
+#  **1 Užduotis:**  
+* Choose one of the following seasonal time series: condmilk, hsales, uselec
+(a) Do the data need transforming? If so, find a suitable transformation.
+(b) Are the data stationary? If not, find an appropriate differencing which yields stationary data.
+(c) Identify a couple of ARIMA models that might be useful in describing the time series. Which of your models is the best according to their AIC values?
+(d) Estimate the parameters of your best model and do diagnostic testing on the residuals. Do the residuals resemble white noise? If not, try to find another ARIMA model which fits better.
+(e) Forecast the next 24 months of data using your preferred model.
+(f) Compare the forecasts obtained using ets().
+
+```{r,message=FALSE}
+library(fpp)
+```
+
+```{r}
+tsdisplay(condmilk)
+```
+
+Duomenyse aiškiai matomas sezonas. Trendo nėra.
+
+* **A: Do the data need transforming? If so, find a suitable transformation.**
+
+Transformacijos nenaudosime nes duomenys pakankamai reguliarus todėl mažai tikėtina, kad  transformacija duos naudos.
+
+* **B: Are the data stationary? If not, find an appropriate differencing which yields stationary data.**
+
+```{r}
+Acf(condmilk)
+```
+
+Acf grafike matomas sezonas, todėl negalime teigti, kad duomenys stacionarūs. Reikia pašalinti sezoną.
+
+
+```{r}
+duom<-diff(condmilk, lag=12)
+plot(duom)
+acf(duom)
+```
+
+Duomenis užlaginom per sezono ilgį ir diferencijavome 1 kartą. Pagal grafikus galima matyti, kad duomenis dar nėra stacionarūs, todėl diferencijuosime dar kartą.
+
+```{r,warning=FALSE}
+duom1<-diff(duom,diff=2)
+plot(duom1)
+Acf(duom1)
+kpss.test(duom1)  # p-vaule > 0.05 H0 neatmetame. Duomenys stacionarūs.
+```
+
+Duomenis tapo panašesni į stacionarius. Atliktas kpss testas irgi teigia, kad duomenys stacionarūs.
+
+* **C: Identify a couple of ARIMA models that might be useful in describing the time series. Which of your models is the best according to their AIC values?**
+
+```{r}
+
+tsdisplay(condmilk)
+
+fit1<-arima(condmilk, order = c(1,0,0),seasonal = list(order=c(2,0,0),period=12))
+
+fit2<-arima(condmilk, order = c(1,0,0),seasonal = list(order=c(1,0,0),period=12))
+
+fit3<-arima(condmilk, order = c(1,0,0),seasonal = list(order=c(2,1,0),period=12))
+```
+
+Palyginsime sukurtu modelių aic.
+
+```{r}
+fit1$aic #fit1 aic
+fit2$aic #fit2 aic
+fit3$aic #fit3 aic
+```
+
+Matome, kad fit3 modeliu AIC yra mažiausias, pagal AIC jis geriausias.
+
+* **D: Estimate the parameters of your best model and do diagnostic testing on the residuals. Do the residuals resemble white noise? If not, try to find another ARIMA model which fits better.**
+
+```{r}
+fit3
+
+Acf(fit3$res)
+Box.test(fit3$res, type="Lj")
+```
+
+Pagal box test ir Acf manome, kad baltasis triukšmas yra nes p-value > 0.05.
+
+* **E: Forecast the next 24 months of data using your preferred model.**
+
+```{r}
+plot(forecast(fit3,h=24))
+```
+
+Prognozė atrodo logiška ir pakankamai tiksli.
+
+* **F: Compare the forecasts obtained using ets().**
+
+```{r}
+fit4<-ets(condmilk)
+plot(forecast(fit4))
+
+accuracy(fit3)
+accuracy(fit4)
+```
+
+Pagal RMSE ets prognozė atrodo geresnė, tačiau žiūrint į grafiką Arima progozė atrodo įtikinamesnė nes prognozuojami svyravimai panašesni į praeities svyravimus.
