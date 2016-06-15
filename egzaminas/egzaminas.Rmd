@@ -282,9 +282,9 @@ ser <- diff(ser, diff = n)
 ```{r}
 kpss.test(ser)
 
-acf(ser) 
+acf(ser) # pagal acf atrodo nestacionaru nes uzgesta labai letai
 ```
-p-value > 0.05, priimame H0, duomenys  stacionarus.
+p-value > 0.05, priimame H0, duomenys  stacionarus. Teigciau kad duomenys nestacionarus
 
 d)
 
