@@ -1,0 +1,18 @@
+---
+title: "Kursinis"
+author: "Kornelijus Samsonas, Linas Šyvis"
+date: "30 September 2016"
+output: html_document
+---
+
+```{r}
+library(xlsx)
+rawdata<- read.xlsx2('tidy2015.xls',sheetIndex = 1 )
+
+
+
+d<-rawdata[,2]
+as.Date(c(d),origin = "1899-12-30")
+```
+
+
