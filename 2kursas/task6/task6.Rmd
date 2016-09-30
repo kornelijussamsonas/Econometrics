@@ -1,0 +1,70 @@
+---
+title: "Task 6"
+author: "Kornelijus Samsonas"
+output: html_document
+---
+
+* **Užduotis:**  Use the Dow Jones index (data set dowjones) to do the following:
+   (A) Produce a time plot of the series.
+   (B) Produce forecasts using the drift method and plot them.
+   (C) Show that the graphed forecasts are identical to extending the line drawn between the first and last observations.
+   (D) Try some of the other benchmark functions to forecast the same data set. Which do you think is best? Why?
+
+```{r,message=FALSE}
+library(fpp)
+```
+
+
+* A dalis. Produce a time plot of the series.
+```{r}
+data<-dowjones # Prisiskiriame duomenis.
+plot(data,main="Dowjones duomenu grafikas", xlab="Laikas",ylab="Duomenys",lwd="3",col="2") 
+```
+
+Grafike matome laike išbrėžtus Dowjones duomenis.
+
+* B dalis. Produce forecasts using the drift method and plot them.
+```{r}
+plot((rwf(data,h=10,drift=TRUE)),main="Grafikas su Drift metodo prognoze", xlab="Laikas",ylab="Duomenys",lwd="3",col="2")
+legend("topleft",lty=1,lwd="2",col=4,legend="Drift metodas")
+# Prognozuojame galims reikšmes "Drift" metodu ir išbrėžiame grafiką.
+```
+
+Grafike esanti prognozė nelabai tiksli, ji labiausiai atsižvelgia į ilgai vykusį pakilimą nuvertindama periodo gale vyravusį kritimą.
+
+
+* C dalis. Show that the graphed forecasts are identical to extending the line drawn between the first and last observations.
+
+```{r}
+plot(data,xlim=c(0,90),main="Dowjones duomenu grafikas", xlab="Laikas",ylab="Duomenys",lwd="3",col="2") 
+lines(rwf(data,drift=TRUE,h=20)$mean,col=5,lwd="3")
+legend("topleft",lty=1,lwd="2",col=c(5,3),legend=c("Drift metodas","Tiese per pradzia ir pabaiga"))
+x1=1
+x2=78
+y1<-dowjones[1] #1st observation 
+y2<-dowjones[78] #78th observation
+b=(y1-y2)/(x1-x2)
+a=(y1*x2-y2*x1)/(x2-x1)
+abline(a,b, col=3, lwd=1)
+```
+
+Prognozė sutampa su linija nubrėžta per pirmą ir paskutinį tašką.
+
+* D dalis. Try some of the other benchmark functions to forecast the same data set. Which do you think is best? Why?
+```{r}
+plot(data,xlim=c(0,100),main="Dowjones duomenu grafikas", xlab="Laikas",ylab="Duomenys",lwd="3",col="2") 
+lines(snaive(data, h=20)$mean,col=7,lwd="3")
+legend("topleft",lty=1,lwd="3",col=c(7),legend=c("Seasonal metodas"))
+```
+
+Matime, kad sezoniškumo nėra. Ši prognonė nėra tinkama.
+
+```{r}
+plot(data,xlim=c(0,100),main="Dowjones duomenu grafikas", xlab="Laikas",ylab="Duomenys",lwd="3",col="2") 
+lines(meanf(data,h=20)$mean,col=3,lwd="3")
+lines(rwf(data,h=20)$mean,col=4,lwd="3")
+lines(rwf(data,drift=TRUE,h=20)$mean,col=5,lwd="3")
+legend("topleft",lty=1,lwd="3",col=c(3,4,5),legend=c("Mean metodas","Naive metodas","Drift metodas"))
+```
+
+Naive metodo prognozė šiuo atvėju tiktų labiausiai, bent jau trumpuoju laikotarpiu, nes atsižvelgiama į paskutinį periodo tašką. Mean metodo prognozė mažai tikėtina dėl prognozuojamo staigaus kritimo. Drift metodas daugiausiai atsižvelgia į ilgą laiką buvusį kylimą smargiai ignoruodamas paskutiniu laikotarpių buvusį kritimą..

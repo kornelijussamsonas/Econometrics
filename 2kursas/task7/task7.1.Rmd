@@ -1,0 +1,49 @@
+---
+title: "Task 7.1"
+author: "Kornelijus Samsonas"
+output: html_document
+---
+
+1 Užduotis: The function tsdisplay(data, plot.type="scatter") is useful for showing a time plot, ACF plot and lagged scatterplot on the same graph. Use it to produce plots of the following time series:
+bricksq, hsales, ibmclose
+Can you spot the effects of seasonality, cyclicity and trend?
+
+```{r,message=FALSE}
+library(fpp)
+```
+
+```{r}
+tsdisplay(bricksq, plot.type="scatter")
+```
+
+- Nagrinėjame pirmajį grafiką.
+
+- Sezoniškumą pastebime mažuose kalniukiuose(trumpi pakilimai ir kritimai vykstantys kiekvienais metais).
+
+- Ciklus matome ilgo laikotarpio pakylime ir staigiame kritime. Pirmas ciklas nuo 1955-1975m. Antras ciklas nuo 1975-1983m. Trečias ciklas nuo 1983-1991m. ir toliau prasideda ketvirtas ciklas.
+
+- Trenda pastebime is to kad ilguoju viso grafiko laikotarpiu yra bendras pakylimas.
+ 
+```{r}
+tsdisplay(hsales, plot.type="scatter")
+```
+
+- Nagrinėjame pirmajį grafiką.
+
+- Sezoniškumą pastebime smailiuose kalnuose(staigūs pakilimai ir kritimai vykstantys kiekvienais metais).
+
+- Ciklus matome keliu metų bendrame kylime ir keliu metu bendrame kritime. Pirmas ciklas nuo 1975-1983m. Antras ciklas nuo 1983-1991m. Toliau prasideda trečias ciklas.
+
+- Trendo nėra nes visi pasikeitimai vyksta viename lygyje.
+
+```{r}
+tsdisplay(ibmclose, plot.type="scatter")
+```
+
+- Nagrinėjame pirmajį grafiką.
+
+- Sezoniškumo grafike nepastebime. Netgi žiūrėdami į ACF grafiką Galime matyti, kad nėra bangavimo todėl pagal tai galime irgi daryti prielaidą, kad sezoniškumo nėra.
+
+- Ciklus matome pakilimuose ir kritimuose. Pirmas ciklas nuo 1-50. Antras ciklas nuo 50-280 . Toliau prasideda trečias ciklas. Trečias ciklas nuo 280-360.(ciklai pagal x ašį.)
+
+- Aiškaus trendo nėra .

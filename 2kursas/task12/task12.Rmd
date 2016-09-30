@@ -1,0 +1,124 @@
+---
+title: "Task 12"
+author: "Kornelijus Samsonas"
+output: html_document
+---
+
+* **Užduotis:**  1. For this exercise, use the monthly Australian short-term overseas visitors data, May 1985–April 2005. (Data set: visitors in expsmooth package.)
+
+(A) Use ets to find the best model for these data and record the training set RMSE. You should find that the best model is ETS(M,A,M).
+(B) We will now check how much larger the one-step RMSE is on out-of-sample data using time series cross-validation. The following code will compute the result, beginning with four years of data in the training set.
+         k <- 48 # minimum size for training set
+         n <- length(visitors) # Total number of observations
+         e <- visitors*NA # Vector to record one-step forecast errors
+         for(i in 48:(n-1))
+        {
+           train <- ts(visitors[1:i],freq=12)
+           fit <- ets(train, "MAM", damped=FALSE)
+           fc <- forecast(fit,h=1)$mean
+           e[i] <- visitors[i+1]-fc
+         }
+         sqrt(mean(e^2,na.rm=TRUE))
+Check that you understand what the code is doing. Ask if you don’t.
+(C) What would happen in the above loop if I had set train <- visitors[1:i]?
+(D) Plot e. What do you notice about the error variances? Why does this occur?
+(E) How does this problem bias the comparison of the RMSE values from (1a) and (1b)? (Hint: think about the effect of the missing values in e.)
+(F) In practice, we will not know that the best model on the whole data set is ETS(M,A,M) until we observe all the data. So a more realistic analysis would be to allow ets to select a different model each time through the loop. Calculate the RMSE using this approach. (Warning: it will take a while as there are a lot of models to fit.)
+(G) How does the RMSE computed in (1f) compare to that computed in (1b)? Does the re-selection of a model at each step make much difference?
+
+```{r,message=FALSE}
+library(fpp)
+```
+
+* **A:** Use ets to find the best model for these data and record the training set RMSE. You should find that the best model is ETS(M,A,M).
+
+```{r}
+train1 <- window(visitors, end=2000.99) #pasidaliname duomenis į train ir test setus
+test1 <- window(visitors, start=2001)
+ets(train1) # Matome , kad geriausias modelis yra ETS(M,A,M)
+a<-subset(accuracy(ets(train1)),select = RMSE) #training set RMSE 
+a
+```
+
+Nustateme, kad geriausias modelis yra ETS(M,A,M) ir išsaugojome prognozės RMSE
+
+* **B:**  We will now check how much larger the one-step RMSE is on out-of-sample data using time series cross-validation. The following code will compute the result, beginning with four years of data in the training set. Check that you understand what the code is doing. Ask if you don’t.
+
+```{r}
+k <- 48 # minimum size for training set
+n <- length(visitors) # Total number of observations
+e <- visitors*NA # Vector to record one-step forecast errors
+for(i in 48:(n-1))
+  {train <- ts(visitors[1:i],freq=12)
+   fit <- ets(train, "MAM", damped=FALSE)
+   fc <- forecast(fit,h=1)$mean
+   e[i] <- visitors[i+1]-fc
+  }
+
+Brmse<-sqrt(mean(e^2,na.rm=TRUE)) #suskaiciuoja rmse
+Brmse
+```
+
+Kodas skaičiuoja paklaidas tarp prognozės ir realių duomenų (rezautas išspausdinamas duomenų masyve "e"). Galiausiai suskaičiuojamas RMSE. Pagal RMSE rezautatus matome, kad rmse A dalyje buvo mažesnis nei B dalyje.
+
+* **C:** What would happen in the above loop if I had set train <- visitors[1:i]?
+
+```{r,error=TRUE}
+k2 <- 48 # minimum size for training set
+n2 <- length(visitors) # Total number of observations
+e2 <- visitors*NA # Vector to record one-step forecast errors
+for(i in 48:(n2-1))
+  {train2 <- visitors[1:i]
+   fit2 <- ets(train2, "MAM", damped=FALSE)
+   fc2 <- forecast(fit2,h=1)$mean
+   e2[i] <- visitors[i+1]-fc2
+  }
+
+sqrt(mean(e2^2,na.rm=TRUE)) #suskaiciuoja rmse 
+```
+
+Duomenys netenka laiko intervalų sužymėjimo todėl MAM metodas nebetinkamas prognozavimui (išmetama klaida). RMSE nesuskaičiuojama
+
+* **D:**  Plot e. What do you notice about the error variances? Why does this occur?
+
+```{r}
+plot(e)
+abline(0,0,col=2)
+```
+
+```{r}
+plot(visitors)
+```
+
+Paklaidų grafike matome, kad paklaidų sklaida begant laikui auga (didėja atstumas nuo 0). Tai gali būti dėl to, duomenų sklaida irgi auga. Kaip matome grafike duomenų kitimo intervalas didėja begant laikui (labiau šokinėja) todėl ir auga paklaidos.
+
+* **E:** How does this problem bias the comparison of the RMSE values from (1a) and (1b)? (Hint: think about the effect of the missing values in e.)
+
+A dalyje prognozė atliekama su training setu, kuris sudaro 80% duomenų ir prognozuojamas trumpesnis laikotarpis todėl galime manyti, kad paklaidos bus mažesnės nei B dalyje kur training setas prasideda nuo 48 duomenų ir prognozė atliekama labai ilgam laikotarpiui todėl paklaidos išauga Todėl RMSE A dalyje yra geresnis.
+
+* **F:** In practice, we will not know that the best model on the whole data set is ETS(M,A,M) until we observe all the data. So a more realistic analysis would be to allow ets to select a different model each time through the loop. Calculate the RMSE using this approach. (Warning: it will take a while as there are a lot of models to fit.)
+
+```{r}
+k3 <- 48 # minimum size for training set
+n3 <- length(visitors) # Total number of observations
+e3 <- visitors*NA # Vector to record one-step forecast errors
+for(i in 48:(n3-1))
+  {train3 <- ts(visitors[1:i],freq=12)
+   fit3 <- ets(train3)
+   fc3 <- forecast(fit3,h=1)$mean
+   e3[i] <- visitors[i+1]-fc3
+  }
+
+Frmse<-sqrt(mean(e3^2,na.rm=TRUE)) #suskaiciuoja rmse 
+Frmse
+```
+
+* **G:** How does the RMSE computed in (1f) compare to that computed in (1b)? Does the re-selection of a model at each step make much difference?
+
+```{r}
+Frmse # F dalies RMSE
+Brmse # B dalies RMSE
+```
+
+B dalies RMSE mažesnis todėl prognozė tikslesnė. B ir F varianto RMSE skiriasi nežiankliai todėl neverta kiekvieną kartą perrinkinėti modelį nes tai užtrunka daug laiko.
+

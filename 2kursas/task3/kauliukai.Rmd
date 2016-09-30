@@ -1,0 +1,28 @@
+---
+title: "Task 3 Kauliukai"
+author: "Kornelijus Samsonas"
+output: html_document
+---
+
+* **Užduotis:** Pirmasis žaidėjas meta vieną kauliuką ir fiksuojamas atsivertusių taškų skaičius. Antrasis žaidėjas meta du klausiukus ir fiksuojamas dydis: $\max(x_1, x_2)-1$, kur $x_1$ ir $x_2$ žymi pirmojo ir antrojo kauliukų iškritusių akių skaičių. Jeigu žaidėjų gautų taškų skaičiai yra lygus, tai ekspermentas kartojamas iš naujo (ir taip kartojama tol, kol galiausiai nustatomas laimėtojas). Kokia tikimybė laimėti pirmajam žaidėjui? 
+
+* Sugeneruojame funkcija, kuri parodo vieno metimo laimėtoją.
+```{r}
+metimas <- function()
+  {
+  k1=0
+  k2=0
+  while (k1 == k2){ #Metimas kartojamas jeigu išmetama po lygiai.
+    k1 <- sample(6, size=1, replace=TRUE) #1 žaidėjo išmestas taškų skaičius.
+    k2 <- max(sample(6, size=2, replace=TRUE)) - 1 #2 žaidėjo išmestas taškų skaičius.
+  }
+  k1>k2 #Nustatome laimėtoją.
+  }
+```
+
+* Kartojame 10000 metimų, kad išsiaiškintume kuo tikslesnę tikimybę laimėti pirmam žaidėjui.
+
+```{r}
+zaidimas<-replicate(10000, metimas()) #Kartojame metimus.
+mean(zaidimas) # Skaičiuojame tikimybę laimėti pirmajam žaidėjui.
+```

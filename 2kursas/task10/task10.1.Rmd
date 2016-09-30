@@ -1,0 +1,59 @@
+---
+title: "Task 10.1"
+author: "Kornelijus Samsonas"
+output: html_document
+---
+
+* **Užduotis:**  For this exercise, use the price of a dozen eggs in the United States from 1900–1993 (data set eggs). Experiment with the various options in the holt() function to see how much the forecasts change with damped or exponential trend. Also try changing the parameter values for α and β to see how they affect the forecasts. Try to develop an intuition of what each parameter and argument is doing to the forecasts.
+[Hint: use h=100 when calling holt() so you can clearly see the differences between the various options when plotting the forecasts.]
+Which model gives the best RMSE?
+Do the residuals from the best model look like white noise?
+
+```{r,message=FALSE}
+library(fpp)
+data<-eggs
+```
+
+```{r}
+
+fit2 <- holt(data, h=100, damped = TRUE,alpha = 0.005,beta = 0.004)
+plot(fit2)
+```
+
+Grafike matome, kad naudojant "damped" prognozėje ilgainiui atsisakome ryškaus trendo esančio duomenyse. Parametras alpha glodina modelio duomenis, kuo didesnis alpha tuo prognozė yra labiau suglodinta. Parametras beta glodina alphos atlikta glodinima (gaunasmas dvigubas glodinimas).
+
+```{r}
+fit3 <- holt(data, h=100, exponential = TRUE,alpha=0.9,beta=0.0005,initial = "simple")
+plot(fit3)
+
+```
+
+Grafike matome, kad prognozė yra labai jautri pradiniams duomenims todėl grafikas yra iškraipomas.
+
+```{r}
+fit4 <- holt(data, h=100, damped = TRUE, exponential = TRUE,alpha=0.8,beta=0.001)
+plot(fit4)
+
+```
+
+Grafike matome, kad naudojant "damped" prognozėje ilgainiui atsisakome ryškaus trendo duomenyse. Naudojant "exponiantial" prognozei prideda eksponentini trendą ir prognozei neleidžia pasiekti neigiamų reikšmių.
+
+```{r}
+accuracy(fit2)
+accuracy(fit3)
+accuracy(fit4)
+```
+
+Modelio fit4 RMSE yra mažiausias todėl modelis yra geriausias lyginant su kitais.
+
+```{r}
+Acf(fit4$res)
+```
+
+Pagal grafiką galima teigti, kad tai yra baltasis triukšmas nes tik vienas stulpelis yra nežymiai išlindęs iš rekomenduojamos melyna punktyrine linija pažymėtos zonos.
+
+```{r}
+Box.test(fit4$res, fitdf=0, type="Lj")
+```
+
+Pagal box test manome, kad baltasis triukšmas yra nes p-value > 0.05.

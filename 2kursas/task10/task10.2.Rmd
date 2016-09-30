@@ -1,0 +1,76 @@
+---
+title: "Task 10.2"
+author: "Kornelijus Samsonas"
+output: html_document
+---
+
+* **Užduotis:**  For this exercise, use the monthly Australian short-term overseas visitors data, May 1985–April 2005. (Data set: visitors.)
+(A) Make a time plot of your data and describe the main features of the series.
+(B) Forecast the next two years using Holt-Winters’ multiplicative method.
+(C) Why is multiplicative seasonality necessary here?
+(D) Experiment with making the trend exponential and/or damped.
+(E) Compare the RMSE of the one-step forecasts from the various methods. Which do you prefer?
+(F) Check that the residuals from the best model look like white noise.
+
+```{r,message=FALSE}
+library(fpp)
+data<-visitors
+```
+
+* **A:** Make a time plot of your data and describe the main features of the series.
+
+```{r}
+tsdisplay(data, plot.type="scatter")
+```
+
+Iš grafiko aiškiai matomas sezoniškumas, jį taip pat matome iš ACF grafike esančio bangavimo. Augimo trendas. Matoma tiesinė priklausomybė tarp kintamojo ir pirmojo jo vėlinio.
+
+* **B:** Forecast the next two years using Holt-Winters’ multiplicative method.
+
+```{r}
+
+fit1 <- hw(data, h=24, seasonal="multiplicative")
+
+plot(fit1)
+```
+
+Prognozė labai panaši į duomenis. 
+
+* **C:** Why is multiplicative seasonality necessary here?
+
+Multiplykativus sezonas reikalingas dėl to, kad duomenyse einant laikui didėja skirtumai tarp sezonų (svyravimai auga). T.y. didėjant reikšmėms didėja svyravimai.
+
+* **D:** Experiment with making the trend exponential and/or damped.
+
+```{r}
+fit2 <- hw(data, h=24, seasonal="multiplicative", damped=TRUE)
+plot(fit2)
+```
+
+Atliekant "damped" glodinimu pagrįsta prognozę ji ilgainiui netenka augimo trendo. 
+Naudojant "exponential" glodinimu pagrįsta prognozę ji niekuo nesiskiria nuo pradinės. 
+Sujugus "exponential" ir "damped" glodinimu pagrįsta prognozę ji tiesiog netinka augimo trendo.
+Galima padaryti išvada , kad "exponential" glodinimu pagrįsta prognozė nieko naudingo mums nepateikia.
+
+* **E:** Compare the RMSE of the one-step forecasts from the various methods. Which do you prefer?
+
+```{r}
+accuracy(fit1)
+accuracy(fit2)
+```
+
+Matome, kad fit2 prognozės RMSE yra mažesnis todėl galime teigti, kad ši prognozė tikslesnė. 
+
+* **F:** Check that the residuals from the best model look like white noise.
+
+```{r}
+Acf(fit2$res)
+```
+
+Pagal grafiką galima teigti, kad tai panašu į baltajį triukšmą nes keli stulpeliai yra nežymiai išlindę iš rekomenduojamos melyna punktyrine linija pažymėtos zonos.
+
+```{r}
+Box.test(fit2$res, fitdf=0, type="Lj")
+```
+
+Pagal box test manome, kad baltasis triukšmas yra nes p-value > 0.05.
