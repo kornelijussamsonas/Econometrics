@@ -1,17 +1,22 @@
 ---
-title: "Kursinis"
+title: "Įskaitinių eismo įvykių Lietuvos keliuose analizė"
 author: "Kornelijus Samsonas, Linas Šyvis"
 date: "30 September 2016"
-output: html_document
+output: pdf_document
 ---
 
-```{r}
 
+```{r}
 library(readxl)
+data<-read_excel('duom2015.xls')
 rawdata<-read_excel('tidy2015.xls')
+agreguoti <- read_excel("agreguoti2009-2015.xls")
+head(data)
+head(rawdata)
+head(agreguoti)
 ```
 
-Tikrinsime hipotezę ar Vilniaus mieste eismo įvykių kaltininkai dažniau yra Vyrai nei moterys.
+Tikrinsime hipoteze ar Vilniaus mieste eismo ivykiu kaltininkai dazniau yra Vyrai nei moterys.
 
 H0= V sk. = 
 
@@ -27,7 +32,7 @@ Panevezysm <- rawdata[rawdata[,1] == "Panevezio m. sav.",]
 
 ### Kaltininku procentas miestuose (Vyrai/Moterys)
 
-Kaltininkų procentas Vilniaus mieste.
+Kaltininku procentas Vilniaus mieste.
 
 ```{r}
 vyruskV<-sum(na.omit(as.numeric(Vilniusm[,19]=="Vyras")))
@@ -37,7 +42,7 @@ vyruprocV=vyruskV/visoV*100
 moteruprocV=moteruskV/visoV*100
 ```
 
-Kaltininkų procentas Kauno mieste.
+Kaltininku procentas Kauno mieste.
 
 ```{r}
 vyruskK<-sum(na.omit(as.numeric(Kaunasm[,19]=="Vyras")))
@@ -47,7 +52,7 @@ vyruprocK=vyruskK/visoK*100
 moteruprocK=moteruskK/visoK*100
 ```
 
-Kaltininkų procentas Siauliu mieste.
+Kaltininku procentas Siauliu mieste.
 
 ```{r}
 vyruskS<-sum(na.omit(as.numeric(Siauliaim[,19]=="Vyras")))
@@ -58,7 +63,7 @@ moteruprocS=moteruskS/visoS*100
 ```
 
 
-Kaltininkų procentas Klaipedos mieste.
+Kaltininku procentas Klaipedos mieste.
 
 ```{r}
 vyruskKl<-sum(na.omit(as.numeric(Klaipedam[,19]=="Vyras")))
@@ -68,7 +73,7 @@ vyruprocKl=vyruskKl/visoKl*100
 moteruprocKl=moteruskKl/visoKl*100
 ```
 
-Kaltininkų procentas Panevezio mieste.
+Kaltininku procentas Panevezio mieste.
 
 ```{r}
 vyruskP<-sum(na.omit(as.numeric(Panevezysm[,19]=="Vyras")))
@@ -77,3 +82,27 @@ visoP<-(vyruskP+moteruskP)
 vyruprocP=vyruskP/visoP*100
 moteruprocP=moteruskP/visoP*100
 ```
+
+
+
+Tikrinsime hipoteze ar Vilniaus mieste eismo ivykiu kaltininkai dazniau yra Vyrai nei moterys.
+
+```{r}
+Vilniusm <- rawdata[rawdata[,1] == "Vilniaus m. sav.",]
+sum(Vilniusm[,"Lytis"]=="Vyras")
+```
+
+Nukentejusiu santykis su dalyviu sk
+```{r}
+nukenteje <- (rawdata[,5] + rawdata[,6])/rawdata[,4]
+data <- cbind(rawdata, nukenteje)
+```
+
+Nukentejusiu ratio
+```{r}
+ts(agreguoti[,4] ,start=c(2009,1), frequency = 12)
+```
+
+
+Palyginti zuvusiu/suzeistu menesinius vidurkius tarp laikotarpiu ir vietu.
+Ar skiriasi ivykiu skaicius nakti ir diena?
