@@ -1,5 +1,5 @@
 ---
-title: "Įskaitinių eismo įvykių Lietuvos keliuose analizė"
+title: "iskaitiniu eismo ivykiu Lietuvos keliuose analize"
 author: "Kornelijus Samsonas, Linas Šyvis"
 date: "30 September 2016"
 output: pdf_document
@@ -100,9 +100,13 @@ data <- cbind(rawdata, nukenteje)
 
 Nukentejusiu ratio
 ```{r}
-ts(agreguoti[,4] ,start=c(2009,1), frequency = 12)
+a <- ts(agreguoti[agreguoti[,3] == "Lietuvos Respublika", 4], start=c(2009,1),  frequency = 12)
+plot(a)
+b <- ts(agreguoti[agreguoti[,3] == "Vilniaus m. sav.", 4], start=c(2009,1), frequency = 12)
+plot(b)
 ```
 
 
 Palyginti zuvusiu/suzeistu menesinius vidurkius tarp laikotarpiu ir vietu.
 Ar skiriasi ivykiu skaicius nakti ir diena?
+
