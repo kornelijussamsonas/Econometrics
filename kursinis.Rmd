@@ -1,8 +1,10 @@
 ---
-title: "iskaitiniu eismo ivykiu Lietuvos keliuose analize"
+title: "Įskaitinių eismo įvykių Lietuvos keliuose analizė"
 author: "Kornelijus Samsonas, Linas Šyvis"
 date: "30 September 2016"
-output: pdf_document
+output: 
+  pdf_document: 
+    latex_engine: xelatex
 ---
 
 
@@ -103,7 +105,7 @@ Nukentejusiu ratio
 a <- ts(agreguoti[agreguoti[,3] == "Lietuvos Respublika", 4], start=c(2009,1),  frequency = 12)
 plot(a)
 b <- ts(agreguoti[agreguoti[,3] == "Vilniaus m. sav.", 4], start=c(2009,1), frequency = 12)
-plot(b)
+plot(b,type="o")
 ```
 
 
