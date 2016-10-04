@@ -8,10 +8,10 @@ output: pdf_document
 
 ```{r}
 library(readxl)
-data<-read_excel('duom2015.xls')
+raw<-read_excel('duom2015.xls')
 rawdata<-read_excel('tidy2015.xls')
 agreguoti <- read_excel("agreguoti2009-2015.xls")
-head(data)
+head(raw)
 head(rawdata)
 head(agreguoti)
 ```
