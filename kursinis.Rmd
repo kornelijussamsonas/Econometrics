@@ -1,18 +1,50 @@
 ---
-title: "Įskaitinių eismo įvykių Lietuvos keliuose analizė"
+title: "Iskaitiniu eismo ivykiu Lietuvos keliuose analize"
 author: "Kornelijus Samsonas, Linas Šyvis"
-date: "30 September 2016"
-output: 
-  pdf_document: 
-    latex_engine: xelatex
+output: pdf_document
 ---
 
-
+#Nuskaitom duomenis
 ```{r}
-library(readxl)
-rawdata<-read_excel('tidy2015.xls')
-agreguoti <- read_excel("agreguoti2009-2015.xls")
+rawdata<-read.csv2('tidy2015.csv', header = T)
+agreguoti <- read.csv2("agreguoti2009-2015.csv", header = T)
+gyventojai <- read.csv2("gyventojai.csv", header = T)
 ```
+
+#Paliekam tik 5 didziuosius miestus
+```{r}
+rawdata <- rawdata[rawdata[,1] == "Vilniaus m. sav." | 
+                     rawdata[,1] == "Kauno m. sav." | 
+                     rawdata[,1] == "Klaipedos m. sav." | 
+                     rawdata[,1] == "siauliu m. sav." | 
+                     rawdata[,1] == "Panevezio m. sav.",]
+```
+
+#Tvarkom blaivumo stulpeli(25)
+```{r}
+rawdata[rawdata[,25] == "Apsvaiges nuo narkotiniu, psichotropiniu ar kitu psichika veikianciu medziagu",25] <- "Neblaivus"
+rawdata[rawdata[,25] == "Atsisake buti patikrintas",25] <- "Neblaivus"
+rawdata[rawdata[,25] == "Neapsvaiges",25] <- "Blaivus"
+rawdata[,25] <- factor(rawdata[,25])
+```
+
+#Pritaikom rodiklius 1000 gyv.
+```{r}
+kgyv <- gyventojai[,3]/1000
+gyventojai <- cbind(gyventojai, kgyv)
+```
+
+#Skaiciuojam neblaivius
+```{r}
+neblaivus <- rawdata[rawdata[,25] == "Neblaivus",]
+nrow(rawdata[rawdata[,25] == "Neblaivus" & rawdata[,1] == "Vilniaus m. sav.",]) / gyventojai[gyventojai[,1] == 2015 & gyventojai[,2] == "Vilniaus m. sav.", 6]
+nrow(rawdata[rawdata[,25] == "Neblaivus" & rawdata[,1] == "Kauno m. sav.",]) / gyventojai[gyventojai[,1] == 2015 & gyventojai[,2] == "Kauno m. sav.", 6]
+nrow(rawdata[rawdata[,25] == "Neblaivus" & rawdata[,1] == "siauliu m. sav.",]) / gyventojai[gyventojai[,1] == 2015 & gyventojai[,2] == "siauliu m. sav.", 6]
+nrow(rawdata[rawdata[,25] == "Neblaivus" & rawdata[,1] == "Klaipedos m. sav.",]) / gyventojai[gyventojai[,1] == 2015 & gyventojai[,2] == "Klaipedos m. sav.", 6]
+nrow(rawdata[rawdata[,25] == "Neblaivus" & rawdata[,1] == "Panevezio m. sav.",]) / gyventojai[gyventojai[,1] == 2015 & gyventojai[,2] == "Panevezio m. sav.", 6]
+```
+
+
 
 Tikrinsime hipoteze ar Vilniaus mieste eismo ivykiu kaltininkai dazniau yra Vyrai nei moterys.
 
@@ -90,18 +122,12 @@ Vilniusm <- rawdata[rawdata[,1] == "Vilniaus m. sav.",]
 sum(Vilniusm[,"Lytis"]=="Vyras")
 ```
 
-Nukentejusiu santykis su dalyviu sk
-```{r}
-nukenteje <- (rawdata[,5] + rawdata[,6])/rawdata[,4]
-data <- cbind(rawdata, nukenteje)
-```
-
 Nukentejusiu ratio
 ```{r}
 a <- ts(agreguoti[agreguoti[,3] == "Lietuvos Respublika", 4], start=c(2009,1),  frequency = 12)
-plot(a,type="o")
+plot(a)
 b <- ts(agreguoti[agreguoti[,3] == "Vilniaus m. sav.", 4], start=c(2009,1), frequency = 12)
-plot(b,type="o")
+plot(b)
 
 ```
 
@@ -111,7 +137,11 @@ Ar skiriasi ivykiu skaicius nakti ir diena?
 
 
 ```{r}
+library(lubridate)
+YrMonth<-paste(year(rawdata[,2]),'-', month(rawdata[,2]),sep='')
+sum(agreguoti[agreguoti[,3] == "Lietuvos Respublika", 4] && agreguoti[,1] == 2015)
 
+metai <- agreguoti[agreguoti[,1]==2015,]
 ```
 
 
