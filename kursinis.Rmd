@@ -10,12 +10,8 @@ output:
 
 ```{r}
 library(readxl)
-raw<-read_excel('duom2015.xls')
 rawdata<-read_excel('tidy2015.xls')
 agreguoti <- read_excel("agreguoti2009-2015.xls")
-head(raw)
-head(rawdata)
-head(agreguoti)
 ```
 
 Tikrinsime hipoteze ar Vilniaus mieste eismo ivykiu kaltininkai dazniau yra Vyrai nei moterys.
@@ -103,12 +99,19 @@ data <- cbind(rawdata, nukenteje)
 Nukentejusiu ratio
 ```{r}
 a <- ts(agreguoti[agreguoti[,3] == "Lietuvos Respublika", 4], start=c(2009,1),  frequency = 12)
-plot(a)
+plot(a,type="o")
 b <- ts(agreguoti[agreguoti[,3] == "Vilniaus m. sav.", 4], start=c(2009,1), frequency = 12)
 plot(b,type="o")
+
 ```
 
 
 Palyginti zuvusiu/suzeistu menesinius vidurkius tarp laikotarpiu ir vietu.
 Ar skiriasi ivykiu skaicius nakti ir diena?
+
+
+```{r}
+
+```
+
 
