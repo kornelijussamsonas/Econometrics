@@ -13,7 +13,7 @@ gyventojai <- read.csv2("gyventojai.csv", header = T)
 
 #Paliekam tik 5 didziuosius miestus
 ```{r}
-rawdata <- rawdata[rawdata[,1] == "Vilniaus m. sav." | 
+data <- rawdata[rawdata[,1] == "Vilniaus m. sav." | 
                      rawdata[,1] == "Kauno m. sav." | 
                      rawdata[,1] == "Klaipedos m. sav." | 
                      rawdata[,1] == "siauliu m. sav." | 
@@ -22,10 +22,9 @@ rawdata <- rawdata[rawdata[,1] == "Vilniaus m. sav." |
 
 #Tvarkom blaivumo stulpeli(25)
 ```{r}
-rawdata[rawdata[,25] == "Apsvaiges nuo narkotiniu, psichotropiniu ar kitu psichika veikianciu medziagu",25] <- "Neblaivus"
-rawdata[rawdata[,25] == "Atsisake buti patikrintas",25] <- "Neblaivus"
-rawdata[rawdata[,25] == "Neapsvaiges",25] <- "Blaivus"
-rawdata[,25] <- factor(rawdata[,25])
+data[data[,25] == "Apsvaiges nuo narkotiniu, psichotropiniu ar kitu psichika veikianciu medziagu" | data[,25] == "Atsisake buti patikrintas",25] <- "Neblaivus"
+data[data[,25] == "Neapsvaiges",25] <- "Blaivus"
+data[,25] <- factor(data[,25])
 ```
 
 #Pritaikom rodiklius 1000 gyv.
@@ -36,14 +35,22 @@ gyventojai <- cbind(gyventojai, kgyv)
 
 #Skaiciuojam neblaivius
 ```{r}
-neblaivus <- rawdata[rawdata[,25] == "Neblaivus",]
-nrow(rawdata[rawdata[,25] == "Neblaivus" & rawdata[,1] == "Vilniaus m. sav.",]) / gyventojai[gyventojai[,1] == 2015 & gyventojai[,2] == "Vilniaus m. sav.", 6]
-nrow(rawdata[rawdata[,25] == "Neblaivus" & rawdata[,1] == "Kauno m. sav.",]) / gyventojai[gyventojai[,1] == 2015 & gyventojai[,2] == "Kauno m. sav.", 6]
-nrow(rawdata[rawdata[,25] == "Neblaivus" & rawdata[,1] == "siauliu m. sav.",]) / gyventojai[gyventojai[,1] == 2015 & gyventojai[,2] == "siauliu m. sav.", 6]
-nrow(rawdata[rawdata[,25] == "Neblaivus" & rawdata[,1] == "Klaipedos m. sav.",]) / gyventojai[gyventojai[,1] == 2015 & gyventojai[,2] == "Klaipedos m. sav.", 6]
-nrow(rawdata[rawdata[,25] == "Neblaivus" & rawdata[,1] == "Panevezio m. sav.",]) / gyventojai[gyventojai[,1] == 2015 & gyventojai[,2] == "Panevezio m. sav.", 6]
+miestai <- c("Vilniaus m. sav.", "Kauno m. sav.", "Klaipedos m. sav.", "siauliu m. sav.", "Panevezio m. sav.")
+neblaivus <- as.numeric(0)
+for(i in 1:5)
+neblaivus[i] <- nrow(data[data[,25] == "Neblaivus" & data[,1] == miestai[i],]) / gyventojai[gyventojai[,1] == 2015 & gyventojai[,2] == miestai[i], 6]
+rbind(miestai, round(neblaivus, digits = 3))
 ```
 
+#Forecastinam autoivykius
+```{r}
+a <- ts(agreguoti[agreguoti[,3] == "Lietuvos Respublika", 4], start=c(2009,1),  frequency = 12)
+##sum(gyventojai[gyventojai[,1] == 2015, 3])
+plot(a)
+b <- ts(agreguoti[agreguoti[,3] == "Vilniaus m. sav.", 4] / gyventojai[gyventojai[,1] == 2015 & gyventojai[,2] == miestai[1], 6], start=c(2009,1), frequency = 12)
+plot(b)
+
+```
 
 
 Tikrinsime hipoteze ar Vilniaus mieste eismo ivykiu kaltininkai dazniau yra Vyrai nei moterys.
@@ -120,15 +127,6 @@ Tikrinsime hipoteze ar Vilniaus mieste eismo ivykiu kaltininkai dazniau yra Vyra
 ```{r}
 Vilniusm <- rawdata[rawdata[,1] == "Vilniaus m. sav.",]
 sum(Vilniusm[,"Lytis"]=="Vyras")
-```
-
-Nukentejusiu ratio
-```{r}
-a <- ts(agreguoti[agreguoti[,3] == "Lietuvos Respublika", 4], start=c(2009,1),  frequency = 12)
-plot(a)
-b <- ts(agreguoti[agreguoti[,3] == "Vilniaus m. sav.", 4], start=c(2009,1), frequency = 12)
-plot(b)
-
 ```
 
 
