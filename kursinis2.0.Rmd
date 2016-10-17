@@ -268,3 +268,10 @@ cor(kor1)
 Palyginti zuvusiu/suzeistu menesinius vidurkius tarp laikotarpiu ir vietu.
 Ar skiriasi ivykiu skaicius nakti ir diena?
 
+#Literatūra
+
+* https://www.epolicija.lt/atviri-duomenys
+* http://osp.stat.gov.lt
+* http://www.lakd.lt
+* http://www.lkpt.lt
+
