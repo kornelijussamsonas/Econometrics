@@ -9,7 +9,10 @@ output:
 
 **Reikalingi užduotims paketai.**
 ```{r, message=F, warning=F}
+Sys.setlocale(locale="en_US.UTF-8")
 library(fpp)
+library(knitr)
+opts_chunk$set(tidy.opts=list(width.cutoff=80),tidy=TRUE)
 ```
 
 
