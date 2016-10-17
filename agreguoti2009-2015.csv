@@ -1,4 +1,4 @@
-Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeistieji;zuvusieji
+Metai;Data;Vieta;Visi_ivykiai;Del_neblaiviu_vairuotoju_kaltes;Suzeistieji;Zuvusieji
 2009;2009M01;Lietuvos Respublika;262;17;303;28
 2009;2009M01;Alytaus apskritis;13;0;12;3
 2009;2009M01;Alytaus m. sav.;7;0;8;0
@@ -43,7 +43,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2009;2009M01;Kelmes r. sav.;1;0;1;0
 2009;2009M01;Pakruojo r. sav.;1;0;1;0
 2009;2009M01;Radviliskio r. sav.;4;0;7;1
-2009;2009M01;siauliu m. sav.;17;1;17;0
+2009;2009M01;Siauliu m. sav.;17;1;17;0
 2009;2009M01;siauliu r. sav.;3;0;4;0
 2009;2009M01;Taurages apskritis;4;0;2;2
 2009;2009M01;Jurbarko r. sav.;1;0;1;0
@@ -115,7 +115,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2009;2009M02;Kelmes r. sav.;5;0;5;1
 2009;2009M02;Pakruojo r. sav.;0;0;0;0
 2009;2009M02;Radviliskio r. sav.;3;1;5;1
-2009;2009M02;siauliu m. sav.;10;0;9;1
+2009;2009M02;Siauliu m. sav.;10;0;9;1
 2009;2009M02;siauliu r. sav.;4;1;5;0
 2009;2009M02;Taurages apskritis;8;1;10;3
 2009;2009M02;Jurbarko r. sav.;3;0;2;0
@@ -187,7 +187,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2009;2009M03;Kelmes r. sav.;0;0;0;0
 2009;2009M03;Pakruojo r. sav.;1;0;1;1
 2009;2009M03;Radviliskio r. sav.;3;0;2;1
-2009;2009M03;siauliu m. sav.;15;2;22;0
+2009;2009M03;Siauliu m. sav.;15;2;22;0
 2009;2009M03;siauliu r. sav.;2;1;5;0
 2009;2009M03;Taurages apskritis;5;2;5;0
 2009;2009M03;Jurbarko r. sav.;0;0;0;0
@@ -259,7 +259,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2009;2009M04;Kelmes r. sav.;2;0;2;0
 2009;2009M04;Pakruojo r. sav.;0;0;0;0
 2009;2009M04;Radviliskio r. sav.;5;1;5;0
-2009;2009M04;siauliu m. sav.;13;1;14;0
+2009;2009M04;Siauliu m. sav.;13;1;14;0
 2009;2009M04;siauliu r. sav.;2;0;3;0
 2009;2009M04;Taurages apskritis;6;2;7;0
 2009;2009M04;Jurbarko r. sav.;1;0;1;0
@@ -331,7 +331,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2009;2009M05;Kelmes r. sav.;4;0;3;1
 2009;2009M05;Pakruojo r. sav.;4;0;7;0
 2009;2009M05;Radviliskio r. sav.;10;2;14;0
-2009;2009M05;siauliu m. sav.;12;1;15;0
+2009;2009M05;Siauliu m. sav.;12;1;15;0
 2009;2009M05;siauliu r. sav.;5;0;6;0
 2009;2009M05;Taurages apskritis;11;0;15;1
 2009;2009M05;Jurbarko r. sav.;3;0;3;0
@@ -403,7 +403,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2009;2009M06;Kelmes r. sav.;8;4;9;2
 2009;2009M06;Pakruojo r. sav.;1;0;1;0
 2009;2009M06;Radviliskio r. sav.;3;0;4;0
-2009;2009M06;siauliu m. sav.;14;0;15;1
+2009;2009M06;Siauliu m. sav.;14;0;15;1
 2009;2009M06;siauliu r. sav.;4;0;5;0
 2009;2009M06;Taurages apskritis;13;2;23;0
 2009;2009M06;Jurbarko r. sav.;3;0;4;0
@@ -475,7 +475,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2009;2009M07;Kelmes r. sav.;7;1;6;1
 2009;2009M07;Pakruojo r. sav.;3;0;3;0
 2009;2009M07;Radviliskio r. sav.;6;2;8;1
-2009;2009M07;siauliu m. sav.;14;0;20;0
+2009;2009M07;Siauliu m. sav.;14;0;20;0
 2009;2009M07;siauliu r. sav.;4;1;6;1
 2009;2009M07;Taurages apskritis;17;2;17;3
 2009;2009M07;Jurbarko r. sav.;6;0;6;1
@@ -547,7 +547,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2009;2009M08;Kelmes r. sav.;4;0;3;1
 2009;2009M08;Pakruojo r. sav.;6;0;7;1
 2009;2009M08;Radviliskio r. sav.;5;1;6;0
-2009;2009M08;siauliu m. sav.;22;2;24;0
+2009;2009M08;Siauliu m. sav.;22;2;24;0
 2009;2009M08;siauliu r. sav.;11;1;9;3
 2009;2009M08;Taurages apskritis;14;3;17;2
 2009;2009M08;Jurbarko r. sav.;5;0;6;0
@@ -619,7 +619,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2009;2009M09;Kelmes r. sav.;1;0;1;0
 2009;2009M09;Pakruojo r. sav.;2;0;2;0
 2009;2009M09;Radviliskio r. sav.;3;0;4;0
-2009;2009M09;siauliu m. sav.;13;0;13;1
+2009;2009M09;Siauliu m. sav.;13;0;13;1
 2009;2009M09;siauliu r. sav.;8;1;9;0
 2009;2009M09;Taurages apskritis;11;0;11;1
 2009;2009M09;Jurbarko r. sav.;2;0;2;0
@@ -691,7 +691,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2009;2009M10;Kelmes r. sav.;3;0;3;0
 2009;2009M10;Pakruojo r. sav.;3;1;4;0
 2009;2009M10;Radviliskio r. sav.;4;0;5;0
-2009;2009M10;siauliu m. sav.;14;1;15;1
+2009;2009M10;Siauliu m. sav.;14;1;15;1
 2009;2009M10;siauliu r. sav.;1;0;1;0
 2009;2009M10;Taurages apskritis;10;0;10;4
 2009;2009M10;Jurbarko r. sav.;1;0;1;0
@@ -763,7 +763,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2009;2009M11;Kelmes r. sav.;4;1;6;0
 2009;2009M11;Pakruojo r. sav.;1;0;1;0
 2009;2009M11;Radviliskio r. sav.;3;0;3;0
-2009;2009M11;siauliu m. sav.;21;1;27;1
+2009;2009M11;Siauliu m. sav.;21;1;27;1
 2009;2009M11;siauliu r. sav.;2;0;2;0
 2009;2009M11;Taurages apskritis;11;1;11;0
 2009;2009M11;Jurbarko r. sav.;3;0;3;0
@@ -835,7 +835,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2009;2009M12;Kelmes r. sav.;6;0;10;0
 2009;2009M12;Pakruojo r. sav.;3;1;4;0
 2009;2009M12;Radviliskio r. sav.;6;0;7;1
-2009;2009M12;siauliu m. sav.;13;0;14;0
+2009;2009M12;Siauliu m. sav.;13;0;14;0
 2009;2009M12;siauliu r. sav.;7;0;11;4
 2009;2009M12;Taurages apskritis;13;1;12;1
 2009;2009M12;Jurbarko r. sav.;6;0;6;0
@@ -907,7 +907,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2010;2010M01;Kelmes r. sav.;2;0;2;0
 2010;2010M01;Pakruojo r. sav.;0;0;0;0
 2010;2010M01;Radviliskio r. sav.;1;0;2;0
-2010;2010M01;siauliu m. sav.;8;0;11;0
+2010;2010M01;Siauliu m. sav.;8;0;11;0
 2010;2010M01;siauliu r. sav.;1;0;1;0
 2010;2010M01;Taurages apskritis;8;1;8;2
 2010;2010M01;Jurbarko r. sav.;2;0;3;0
@@ -979,7 +979,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2010;2010M02;Kelmes r. sav.;1;0;2;0
 2010;2010M02;Pakruojo r. sav.;0;0;0;0
 2010;2010M02;Radviliskio r. sav.;2;0;3;0
-2010;2010M02;siauliu m. sav.;10;0;12;1
+2010;2010M02;Siauliu m. sav.;10;0;12;1
 2010;2010M02;siauliu r. sav.;1;0;1;0
 2010;2010M02;Taurages apskritis;2;0;2;0
 2010;2010M02;Jurbarko r. sav.;0;0;0;0
@@ -1051,7 +1051,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2010;2010M03;Kelmes r. sav.;1;0;1;0
 2010;2010M03;Pakruojo r. sav.;1;1;3;0
 2010;2010M03;Radviliskio r. sav.;3;0;4;0
-2010;2010M03;siauliu m. sav.;12;1;13;0
+2010;2010M03;Siauliu m. sav.;12;1;13;0
 2010;2010M03;siauliu r. sav.;1;0;2;0
 2010;2010M03;Taurages apskritis;5;1;5;1
 2010;2010M03;Jurbarko r. sav.;2;1;3;0
@@ -1123,7 +1123,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2010;2010M04;Kelmes r. sav.;3;2;3;0
 2010;2010M04;Pakruojo r. sav.;3;1;3;1
 2010;2010M04;Radviliskio r. sav.;1;1;0;1
-2010;2010M04;siauliu m. sav.;14;1;18;0
+2010;2010M04;Siauliu m. sav.;14;1;18;0
 2010;2010M04;siauliu r. sav.;4;0;9;1
 2010;2010M04;Taurages apskritis;3;0;3;0
 2010;2010M04;Jurbarko r. sav.;0;0;0;0
@@ -1195,7 +1195,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2010;2010M05;Kelmes r. sav.;3;2;4;0
 2010;2010M05;Pakruojo r. sav.;0;0;0;0
 2010;2010M05;Radviliskio r. sav.;4;0;4;0
-2010;2010M05;siauliu m. sav.;10;0;13;1
+2010;2010M05;Siauliu m. sav.;10;0;13;1
 2010;2010M05;siauliu r. sav.;2;0;2;1
 2010;2010M05;Taurages apskritis;10;2;16;1
 2010;2010M05;Jurbarko r. sav.;2;1;7;0
@@ -1267,7 +1267,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2010;2010M06;Kelmes r. sav.;8;1;10;0
 2010;2010M06;Pakruojo r. sav.;4;0;3;1
 2010;2010M06;Radviliskio r. sav.;2;0;1;1
-2010;2010M06;siauliu m. sav.;19;1;22;0
+2010;2010M06;Siauliu m. sav.;19;1;22;0
 2010;2010M06;siauliu r. sav.;6;3;5;1
 2010;2010M06;Taurages apskritis;10;2;10;1
 2010;2010M06;Jurbarko r. sav.;2;1;2;0
@@ -1339,7 +1339,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2010;2010M07;Kelmes r. sav.;6;0;9;0
 2010;2010M07;Pakruojo r. sav.;3;1;2;1
 2010;2010M07;Radviliskio r. sav.;4;0;5;1
-2010;2010M07;siauliu m. sav.;11;0;16;0
+2010;2010M07;Siauliu m. sav.;11;0;16;0
 2010;2010M07;siauliu r. sav.;3;1;3;0
 2010;2010M07;Taurages apskritis;10;1;11;3
 2010;2010M07;Jurbarko r. sav.;2;0;3;2
@@ -1411,7 +1411,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2010;2010M08;Kelmes r. sav.;0;0;0;0
 2010;2010M08;Pakruojo r. sav.;7;1;10;0
 2010;2010M08;Radviliskio r. sav.;5;1;10;2
-2010;2010M08;siauliu m. sav.;15;0;19;0
+2010;2010M08;Siauliu m. sav.;15;0;19;0
 2010;2010M08;siauliu r. sav.;6;1;6;2
 2010;2010M08;Taurages apskritis;18;3;25;1
 2010;2010M08;Jurbarko r. sav.;6;0;9;0
@@ -1483,7 +1483,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2010;2010M09;Kelmes r. sav.;5;0;6;0
 2010;2010M09;Pakruojo r. sav.;3;0;5;0
 2010;2010M09;Radviliskio r. sav.;8;1;8;0
-2010;2010M09;siauliu m. sav.;15;1;14;3
+2010;2010M09;Siauliu m. sav.;15;1;14;3
 2010;2010M09;siauliu r. sav.;3;0;3;0
 2010;2010M09;Taurages apskritis;16;1;14;3
 2010;2010M09;Jurbarko r. sav.;5;0;6;0
@@ -1555,7 +1555,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2010;2010M10;Kelmes r. sav.;3;0;1;2
 2010;2010M10;Pakruojo r. sav.;1;0;1;0
 2010;2010M10;Radviliskio r. sav.;2;0;3;0
-2010;2010M10;siauliu m. sav.;11;1;11;1
+2010;2010M10;Siauliu m. sav.;11;1;11;1
 2010;2010M10;siauliu r. sav.;5;1;5;0
 2010;2010M10;Taurages apskritis;6;1;6;0
 2010;2010M10;Jurbarko r. sav.;1;0;1;0
@@ -1627,7 +1627,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2010;2010M11;Kelmes r. sav.;2;0;2;1
 2010;2010M11;Pakruojo r. sav.;1;0;2;0
 2010;2010M11;Radviliskio r. sav.;5;0;8;0
-2010;2010M11;siauliu m. sav.;16;0;16;0
+2010;2010M11;Siauliu m. sav.;16;0;16;0
 2010;2010M11;siauliu r. sav.;3;0;4;0
 2010;2010M11;Taurages apskritis;15;0;18;2
 2010;2010M11;Jurbarko r. sav.;4;0;5;2
@@ -1699,7 +1699,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2010;2010M12;Kelmes r. sav.;3;0;1;2
 2010;2010M12;Pakruojo r. sav.;3;0;8;0
 2010;2010M12;Radviliskio r. sav.;6;0;6;0
-2010;2010M12;siauliu m. sav.;20;0;22;0
+2010;2010M12;Siauliu m. sav.;20;0;22;0
 2010;2010M12;siauliu r. sav.;6;2;12;0
 2010;2010M12;Taurages apskritis;5;1;6;0
 2010;2010M12;Jurbarko r. sav.;2;0;2;0
@@ -1771,7 +1771,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2011;2011M01;Kelmes r. sav.;2;0;2;0
 2011;2011M01;Pakruojo r. sav.;2;0;2;0
 2011;2011M01;Radviliskio r. sav.;2;1;2;0
-2011;2011M01;siauliu m. sav.;8;0;8;0
+2011;2011M01;Siauliu m. sav.;8;0;8;0
 2011;2011M01;siauliu r. sav.;2;0;2;0
 2011;2011M01;Taurages apskritis;2;0;2;0
 2011;2011M01;Jurbarko r. sav.;0;0;0;0
@@ -1843,7 +1843,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2011;2011M02;Kelmes r. sav.;3;0;3;1
 2011;2011M02;Pakruojo r. sav.;1;0;1;0
 2011;2011M02;Radviliskio r. sav.;3;0;3;0
-2011;2011M02;siauliu m. sav.;3;0;3;0
+2011;2011M02;Siauliu m. sav.;3;0;3;0
 2011;2011M02;siauliu r. sav.;1;1;4;0
 2011;2011M02;Taurages apskritis;5;0;6;0
 2011;2011M02;Jurbarko r. sav.;1;0;1;0
@@ -1915,7 +1915,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2011;2011M03;Kelmes r. sav.;2;0;6;0
 2011;2011M03;Pakruojo r. sav.;3;1;3;0
 2011;2011M03;Radviliskio r. sav.;4;0;4;0
-2011;2011M03;siauliu m. sav.;12;1;14;0
+2011;2011M03;Siauliu m. sav.;12;1;14;0
 2011;2011M03;siauliu r. sav.;1;0;3;0
 2011;2011M03;Taurages apskritis;5;0;6;0
 2011;2011M03;Jurbarko r. sav.;3;0;3;0
@@ -1987,7 +1987,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2011;2011M04;Kelmes r. sav.;4;0;4;0
 2011;2011M04;Pakruojo r. sav.;1;0;2;1
 2011;2011M04;Radviliskio r. sav.;3;1;4;0
-2011;2011M04;siauliu m. sav.;5;0;5;1
+2011;2011M04;Siauliu m. sav.;5;0;5;1
 2011;2011M04;siauliu r. sav.;3;1;4;0
 2011;2011M04;Taurages apskritis;10;1;10;1
 2011;2011M04;Jurbarko r. sav.;1;0;1;0
@@ -2059,7 +2059,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2011;2011M05;Kelmes r. sav.;3;1;5;0
 2011;2011M05;Pakruojo r. sav.;3;0;3;0
 2011;2011M05;Radviliskio r. sav.;5;0;5;0
-2011;2011M05;siauliu m. sav.;11;1;11;0
+2011;2011M05;Siauliu m. sav.;11;1;11;0
 2011;2011M05;siauliu r. sav.;7;0;9;0
 2011;2011M05;Taurages apskritis;7;1;9;3
 2011;2011M05;Jurbarko r. sav.;2;0;4;2
@@ -2131,7 +2131,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2011;2011M06;Kelmes r. sav.;7;0;7;4
 2011;2011M06;Pakruojo r. sav.;5;0;4;3
 2011;2011M06;Radviliskio r. sav.;6;2;9;0
-2011;2011M06;siauliu m. sav.;16;0;21;0
+2011;2011M06;Siauliu m. sav.;16;0;21;0
 2011;2011M06;siauliu r. sav.;5;1;7;1
 2011;2011M06;Taurages apskritis;17;5;18;4
 2011;2011M06;Jurbarko r. sav.;1;0;1;1
@@ -2203,7 +2203,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2011;2011M07;Kelmes r. sav.;3;0;4;0
 2011;2011M07;Pakruojo r. sav.;8;1;11;1
 2011;2011M07;Radviliskio r. sav.;4;0;6;1
-2011;2011M07;siauliu m. sav.;14;0;16;0
+2011;2011M07;Siauliu m. sav.;14;0;16;0
 2011;2011M07;siauliu r. sav.;6;0;8;0
 2011;2011M07;Taurages apskritis;9;1;12;0
 2011;2011M07;Jurbarko r. sav.;3;1;5;0
@@ -2275,7 +2275,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2011;2011M08;Kelmes r. sav.;8;0;11;0
 2011;2011M08;Pakruojo r. sav.;3;1;3;0
 2011;2011M08;Radviliskio r. sav.;3;1;4;1
-2011;2011M08;siauliu m. sav.;9;0;11;0
+2011;2011M08;Siauliu m. sav.;9;0;11;0
 2011;2011M08;siauliu r. sav.;9;0;11;1
 2011;2011M08;Taurages apskritis;11;3;14;1
 2011;2011M08;Jurbarko r. sav.;5;3;8;0
@@ -2347,7 +2347,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2011;2011M09;Kelmes r. sav.;2;2;2;0
 2011;2011M09;Pakruojo r. sav.;1;0;1;0
 2011;2011M09;Radviliskio r. sav.;9;0;15;0
-2011;2011M09;siauliu m. sav.;11;3;13;1
+2011;2011M09;Siauliu m. sav.;11;3;13;1
 2011;2011M09;siauliu r. sav.;7;0;8;1
 2011;2011M09;Taurages apskritis;13;5;16;0
 2011;2011M09;Jurbarko r. sav.;3;2;3;0
@@ -2419,7 +2419,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2011;2011M10;Kelmes r. sav.;3;2;3;0
 2011;2011M10;Pakruojo r. sav.;1;0;1;0
 2011;2011M10;Radviliskio r. sav.;4;0;5;0
-2011;2011M10;siauliu m. sav.;13;1;20;0
+2011;2011M10;Siauliu m. sav.;13;1;20;0
 2011;2011M10;siauliu r. sav.;4;0;1;3
 2011;2011M10;Taurages apskritis;7;1;8;0
 2011;2011M10;Jurbarko r. sav.;1;0;1;0
@@ -2491,7 +2491,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2011;2011M11;Kelmes r. sav.;1;0;2;0
 2011;2011M11;Pakruojo r. sav.;0;0;0;0
 2011;2011M11;Radviliskio r. sav.;3;0;2;1
-2011;2011M11;siauliu m. sav.;10;0;11;0
+2011;2011M11;Siauliu m. sav.;10;0;11;0
 2011;2011M11;siauliu r. sav.;2;0;2;0
 2011;2011M11;Taurages apskritis;15;3;15;1
 2011;2011M11;Jurbarko r. sav.;5;1;5;0
@@ -2563,7 +2563,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2011;2011M12;Kelmes r. sav.;2;0;3;0
 2011;2011M12;Pakruojo r. sav.;1;0;1;0
 2011;2011M12;Radviliskio r. sav.;4;0;5;0
-2011;2011M12;siauliu m. sav.;31;0;34;0
+2011;2011M12;Siauliu m. sav.;31;0;34;0
 2011;2011M12;siauliu r. sav.;4;0;6;0
 2011;2011M12;Taurages apskritis;9;0;10;0
 2011;2011M12;Jurbarko r. sav.;1;0;1;0
@@ -2635,7 +2635,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2012;2012M01;Kelmes r. sav.;1;0;1;0
 2012;2012M01;Pakruojo r. sav.;2;0;3;0
 2012;2012M01;Radviliskio r. sav.;7;1;6;1
-2012;2012M01;siauliu m. sav.;17;0;17;1
+2012;2012M01;Siauliu m. sav.;17;0;17;1
 2012;2012M01;siauliu r. sav.;8;1;11;0
 2012;2012M01;Taurages apskritis;9;1;11;0
 2012;2012M01;Jurbarko r. sav.;2;0;2;0
@@ -2707,7 +2707,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2012;2012M02;Kelmes r. sav.;2;0;1;1
 2012;2012M02;Pakruojo r. sav.;1;0;1;0
 2012;2012M02;Radviliskio r. sav.;3;0;2;1
-2012;2012M02;siauliu m. sav.;10;0;16;0
+2012;2012M02;Siauliu m. sav.;10;0;16;0
 2012;2012M02;siauliu r. sav.;2;0;2;0
 2012;2012M02;Taurages apskritis;5;1;5;0
 2012;2012M02;Jurbarko r. sav.;1;0;1;0
@@ -2779,7 +2779,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2012;2012M03;Kelmes r. sav.;4;0;6;0
 2012;2012M03;Pakruojo r. sav.;0;0;0;0
 2012;2012M03;Radviliskio r. sav.;5;0;8;0
-2012;2012M03;siauliu m. sav.;9;1;9;0
+2012;2012M03;Siauliu m. sav.;9;1;9;0
 2012;2012M03;siauliu r. sav.;3;3;3;1
 2012;2012M03;Taurages apskritis;3;2;3;1
 2012;2012M03;Jurbarko r. sav.;0;0;0;0
@@ -2851,7 +2851,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2012;2012M04;Kelmes r. sav.;1;0;1;0
 2012;2012M04;Pakruojo r. sav.;2;1;4;0
 2012;2012M04;Radviliskio r. sav.;1;0;0;1
-2012;2012M04;siauliu m. sav.;6;0;6;1
+2012;2012M04;Siauliu m. sav.;6;0;6;1
 2012;2012M04;siauliu r. sav.;4;1;7;0
 2012;2012M04;Taurages apskritis;9;1;10;1
 2012;2012M04;Jurbarko r. sav.;4;0;5;0
@@ -2923,7 +2923,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2012;2012M05;Kelmes r. sav.;8;0;8;1
 2012;2012M05;Pakruojo r. sav.;1;0;1;0
 2012;2012M05;Radviliskio r. sav.;5;1;5;0
-2012;2012M05;siauliu m. sav.;18;1;21;0
+2012;2012M05;Siauliu m. sav.;18;1;21;0
 2012;2012M05;siauliu r. sav.;7;0;10;1
 2012;2012M05;Taurages apskritis;11;0;12;1
 2012;2012M05;Jurbarko r. sav.;2;0;2;0
@@ -2995,7 +2995,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2012;2012M06;Kelmes r. sav.;2;0;2;0
 2012;2012M06;Pakruojo r. sav.;2;0;5;0
 2012;2012M06;Radviliskio r. sav.;4;1;4;1
-2012;2012M06;siauliu m. sav.;7;1;8;0
+2012;2012M06;Siauliu m. sav.;7;1;8;0
 2012;2012M06;siauliu r. sav.;4;1;5;0
 2012;2012M06;Taurages apskritis;14;2;17;4
 2012;2012M06;Jurbarko r. sav.;4;1;6;0
@@ -3067,7 +3067,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2012;2012M07;Kelmes r. sav.;2;0;3;0
 2012;2012M07;Pakruojo r. sav.;3;0;4;0
 2012;2012M07;Radviliskio r. sav.;6;4;7;1
-2012;2012M07;siauliu m. sav.;15;1;15;0
+2012;2012M07;Siauliu m. sav.;15;1;15;0
 2012;2012M07;siauliu r. sav.;4;1;4;0
 2012;2012M07;Taurages apskritis;11;1;13;2
 2012;2012M07;Jurbarko r. sav.;1;0;2;0
@@ -3139,7 +3139,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2012;2012M08;Kelmes r. sav.;4;1;4;0
 2012;2012M08;Pakruojo r. sav.;2;0;3;0
 2012;2012M08;Radviliskio r. sav.;9;0;11;0
-2012;2012M08;siauliu m. sav.;18;1;17;1
+2012;2012M08;Siauliu m. sav.;18;1;17;1
 2012;2012M08;siauliu r. sav.;8;0;10;0
 2012;2012M08;Taurages apskritis;11;2;13;3
 2012;2012M08;Jurbarko r. sav.;5;1;3;2
@@ -3211,7 +3211,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2012;2012M09;Kelmes r. sav.;7;0;12;0
 2012;2012M09;Pakruojo r. sav.;4;0;4;0
 2012;2012M09;Radviliskio r. sav.;7;2;7;0
-2012;2012M09;siauliu m. sav.;14;0;14;2
+2012;2012M09;Siauliu m. sav.;14;0;14;2
 2012;2012M09;siauliu r. sav.;8;2;9;2
 2012;2012M09;Taurages apskritis;7;1;11;0
 2012;2012M09;Jurbarko r. sav.;2;1;3;0
@@ -3283,7 +3283,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2012;2012M10;Kelmes r. sav.;6;0;6;0
 2012;2012M10;Pakruojo r. sav.;4;0;4;0
 2012;2012M10;Radviliskio r. sav.;5;0;9;0
-2012;2012M10;siauliu m. sav.;10;1;11;0
+2012;2012M10;Siauliu m. sav.;10;1;11;0
 2012;2012M10;siauliu r. sav.;4;0;6;0
 2012;2012M10;Taurages apskritis;6;1;7;0
 2012;2012M10;Jurbarko r. sav.;0;0;0;0
@@ -3355,7 +3355,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2012;2012M11;Kelmes r. sav.;0;0;0;0
 2012;2012M11;Pakruojo r. sav.;1;1;2;0
 2012;2012M11;Radviliskio r. sav.;6;1;6;2
-2012;2012M11;siauliu m. sav.;24;4;31;0
+2012;2012M11;Siauliu m. sav.;24;4;31;0
 2012;2012M11;siauliu r. sav.;9;2;8;1
 2012;2012M11;Taurages apskritis;7;0;7;1
 2012;2012M11;Jurbarko r. sav.;1;0;0;1
@@ -3427,7 +3427,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2012;2012M12;Kelmes r. sav.;2;0;2;0
 2012;2012M12;Pakruojo r. sav.;2;0;2;0
 2012;2012M12;Radviliskio r. sav.;3;0;3;1
-2012;2012M12;siauliu m. sav.;13;1;12;1
+2012;2012M12;Siauliu m. sav.;13;1;12;1
 2012;2012M12;siauliu r. sav.;5;1;5;0
 2012;2012M12;Taurages apskritis;8;0;7;2
 2012;2012M12;Jurbarko r. sav.;3;0;2;2
@@ -3499,7 +3499,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2013;2013M01;Kelmes r. sav.;2;0;2;0
 2013;2013M01;Pakruojo r. sav.;2;0;9;0
 2013;2013M01;Radviliskio r. sav.;5;2;5;0
-2013;2013M01;siauliu m. sav.;9;0;9;0
+2013;2013M01;Siauliu m. sav.;9;0;9;0
 2013;2013M01;siauliu r. sav.;5;0;5;1
 2013;2013M01;Taurages apskritis;9;0;11;0
 2013;2013M01;Jurbarko r. sav.;2;0;3;0
@@ -3571,7 +3571,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2013;2013M02;Kelmes r. sav.;2;0;2;0
 2013;2013M02;Pakruojo r. sav.;1;0;1;0
 2013;2013M02;Radviliskio r. sav.;3;0;3;0
-2013;2013M02;siauliu m. sav.;9;0;9;0
+2013;2013M02;Siauliu m. sav.;9;0;9;0
 2013;2013M02;siauliu r. sav.;4;0;5;0
 2013;2013M02;Taurages apskritis;10;1;13;5
 2013;2013M02;Jurbarko r. sav.;2;1;2;0
@@ -3643,7 +3643,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2013;2013M03;Kelmes r. sav.;0;0;0;0
 2013;2013M03;Pakruojo r. sav.;1;0;1;0
 2013;2013M03;Radviliskio r. sav.;5;1;7;0
-2013;2013M03;siauliu m. sav.;6;0;10;0
+2013;2013M03;Siauliu m. sav.;6;0;10;0
 2013;2013M03;siauliu r. sav.;3;0;3;0
 2013;2013M03;Taurages apskritis;3;1;2;1
 2013;2013M03;Jurbarko r. sav.;2;1;2;0
@@ -3715,7 +3715,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2013;2013M04;Kelmes r. sav.;3;2;3;0
 2013;2013M04;Pakruojo r. sav.;1;0;0;2
 2013;2013M04;Radviliskio r. sav.;2;0;2;0
-2013;2013M04;siauliu m. sav.;10;2;10;0
+2013;2013M04;Siauliu m. sav.;10;2;10;0
 2013;2013M04;siauliu r. sav.;4;0;4;1
 2013;2013M04;Taurages apskritis;4;1;3;1
 2013;2013M04;Jurbarko r. sav.;0;0;0;0
@@ -3787,7 +3787,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2013;2013M05;Kelmes r. sav.;1;0;1;0
 2013;2013M05;Pakruojo r. sav.;1;1;2;0
 2013;2013M05;Radviliskio r. sav.;5;2;5;0
-2013;2013M05;siauliu m. sav.;14;0;14;0
+2013;2013M05;Siauliu m. sav.;14;0;14;0
 2013;2013M05;siauliu r. sav.;3;0;5;0
 2013;2013M05;Taurages apskritis;7;2;7;1
 2013;2013M05;Jurbarko r. sav.;2;1;2;0
@@ -3859,7 +3859,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2013;2013M06;Kelmes r. sav.;1;0;3;0
 2013;2013M06;Pakruojo r. sav.;2;1;3;0
 2013;2013M06;Radviliskio r. sav.;2;0;3;0
-2013;2013M06;siauliu m. sav.;12;1;17;0
+2013;2013M06;Siauliu m. sav.;12;1;17;0
 2013;2013M06;siauliu r. sav.;4;0;7;0
 2013;2013M06;Taurages apskritis;6;2;11;1
 2013;2013M06;Jurbarko r. sav.;2;1;2;0
@@ -3931,7 +3931,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2013;2013M07;Kelmes r. sav.;2;0;2;0
 2013;2013M07;Pakruojo r. sav.;2;0;2;0
 2013;2013M07;Radviliskio r. sav.;5;1;5;0
-2013;2013M07;siauliu m. sav.;19;0;22;1
+2013;2013M07;Siauliu m. sav.;19;0;22;1
 2013;2013M07;siauliu r. sav.;7;0;8;0
 2013;2013M07;Taurages apskritis;10;2;12;1
 2013;2013M07;Jurbarko r. sav.;1;0;3;0
@@ -4003,7 +4003,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2013;2013M08;Kelmes r. sav.;2;0;2;0
 2013;2013M08;Pakruojo r. sav.;5;1;5;0
 2013;2013M08;Radviliskio r. sav.;7;0;7;2
-2013;2013M08;siauliu m. sav.;16;0;20;0
+2013;2013M08;Siauliu m. sav.;16;0;20;0
 2013;2013M08;siauliu r. sav.;4;3;7;0
 2013;2013M08;Taurages apskritis;14;3;20;0
 2013;2013M08;Jurbarko r. sav.;2;1;2;0
@@ -4075,7 +4075,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2013;2013M09;Kelmes r. sav.;1;0;1;0
 2013;2013M09;Pakruojo r. sav.;2;0;2;0
 2013;2013M09;Radviliskio r. sav.;3;0;3;1
-2013;2013M09;siauliu m. sav.;17;0;18;0
+2013;2013M09;Siauliu m. sav.;17;0;18;0
 2013;2013M09;siauliu r. sav.;11;2;11;1
 2013;2013M09;Taurages apskritis;10;0;10;1
 2013;2013M09;Jurbarko r. sav.;3;0;3;0
@@ -4147,7 +4147,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2013;2013M10;Kelmes r. sav.;3;0;5;0
 2013;2013M10;Pakruojo r. sav.;5;1;8;1
 2013;2013M10;Radviliskio r. sav.;4;3;4;0
-2013;2013M10;siauliu m. sav.;21;0;29;0
+2013;2013M10;Siauliu m. sav.;21;0;29;0
 2013;2013M10;siauliu r. sav.;2;1;2;0
 2013;2013M10;Taurages apskritis;10;2;10;1
 2013;2013M10;Jurbarko r. sav.;1;1;1;0
@@ -4219,7 +4219,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2013;2013M11;Kelmes r. sav.;5;0;7;0
 2013;2013M11;Pakruojo r. sav.;3;1;4;0
 2013;2013M11;Radviliskio r. sav.;10;1;9;1
-2013;2013M11;siauliu m. sav.;18;0;21;0
+2013;2013M11;Siauliu m. sav.;18;0;21;0
 2013;2013M11;siauliu r. sav.;7;1;12;0
 2013;2013M11;Taurages apskritis;17;1;18;1
 2013;2013M11;Jurbarko r. sav.;4;1;4;0
@@ -4291,7 +4291,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2013;2013M12;Kelmes r. sav.;0;0;0;0
 2013;2013M12;Pakruojo r. sav.;2;0;5;0
 2013;2013M12;Radviliskio r. sav.;5;0;5;1
-2013;2013M12;siauliu m. sav.;12;0;13;0
+2013;2013M12;Siauliu m. sav.;12;0;13;0
 2013;2013M12;siauliu r. sav.;6;2;9;0
 2013;2013M12;Taurages apskritis;10;0;11;1
 2013;2013M12;Jurbarko r. sav.;0;0;0;0
@@ -4363,7 +4363,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2014;2014M01;Kelmes r. sav.;1;0;1;0
 2014;2014M01;Pakruojo r. sav.;0;0;0;0
 2014;2014M01;Radviliskio r. sav.;4;2;4;0
-2014;2014M01;siauliu m. sav.;11;0;11;1
+2014;2014M01;Siauliu m. sav.;11;0;11;1
 2014;2014M01;siauliu r. sav.;6;0;7;1
 2014;2014M01;Taurages apskritis;4;1;9;0
 2014;2014M01;Jurbarko r. sav.;0;0;0;0
@@ -4435,7 +4435,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2014;2014M02;Kelmes r. sav.;4;1;5;0
 2014;2014M02;Pakruojo r. sav.;1;0;2;0
 2014;2014M02;Radviliskio r. sav.;1;1;2;0
-2014;2014M02;siauliu m. sav.;8;0;9;0
+2014;2014M02;Siauliu m. sav.;8;0;9;0
 2014;2014M02;siauliu r. sav.;4;0;2;2
 2014;2014M02;Taurages apskritis;3;0;6;0
 2014;2014M02;Jurbarko r. sav.;1;0;4;0
@@ -4507,7 +4507,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2014;2014M03;Kelmes r. sav.;2;0;2;0
 2014;2014M03;Pakruojo r. sav.;1;0;1;0
 2014;2014M03;Radviliskio r. sav.;2;1;5;0
-2014;2014M03;siauliu m. sav.;11;0;12;0
+2014;2014M03;Siauliu m. sav.;11;0;12;0
 2014;2014M03;siauliu r. sav.;5;0;6;1
 2014;2014M03;Taurages apskritis;6;0;6;0
 2014;2014M03;Jurbarko r. sav.;1;0;1;0
@@ -4579,7 +4579,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2014;2014M04;Kelmes r. sav.;4;0;5;1
 2014;2014M04;Pakruojo r. sav.;0;0;0;0
 2014;2014M04;Radviliskio r. sav.;3;1;5;0
-2014;2014M04;siauliu m. sav.;9;2;12;0
+2014;2014M04;Siauliu m. sav.;9;2;12;0
 2014;2014M04;siauliu r. sav.;2;0;1;1
 2014;2014M04;Taurages apskritis;8;1;12;1
 2014;2014M04;Jurbarko r. sav.;2;0;2;1
@@ -4651,7 +4651,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2014;2014M05;Kelmes r. sav.;5;2;9;1
 2014;2014M05;Pakruojo r. sav.;1;0;1;0
 2014;2014M05;Radviliskio r. sav.;4;2;6;1
-2014;2014M05;siauliu m. sav.;17;0;21;0
+2014;2014M05;Siauliu m. sav.;17;0;21;0
 2014;2014M05;siauliu r. sav.;5;1;8;0
 2014;2014M05;Taurages apskritis;10;1;10;0
 2014;2014M05;Jurbarko r. sav.;1;0;1;0
@@ -4723,7 +4723,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2014;2014M06;Kelmes r. sav.;4;2;5;0
 2014;2014M06;Pakruojo r. sav.;2;1;2;0
 2014;2014M06;Radviliskio r. sav.;6;2;10;1
-2014;2014M06;siauliu m. sav.;16;0;19;0
+2014;2014M06;Siauliu m. sav.;16;0;19;0
 2014;2014M06;siauliu r. sav.;3;1;3;1
 2014;2014M06;Taurages apskritis;8;0;7;1
 2014;2014M06;Jurbarko r. sav.;2;0;2;0
@@ -4795,7 +4795,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2014;2014M07;Kelmes r. sav.;5;1;7;3
 2014;2014M07;Pakruojo r. sav.;3;1;3;0
 2014;2014M07;Radviliskio r. sav.;5;0;7;0
-2014;2014M07;siauliu m. sav.;11;2;12;1
+2014;2014M07;Siauliu m. sav.;11;2;12;1
 2014;2014M07;siauliu r. sav.;4;1;4;0
 2014;2014M07;Taurages apskritis;6;0;9;0
 2014;2014M07;Jurbarko r. sav.;2;0;3;0
@@ -4867,7 +4867,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2014;2014M08;Kelmes r. sav.;2;0;2;0
 2014;2014M08;Pakruojo r. sav.;2;0;2;0
 2014;2014M08;Radviliskio r. sav.;6;1;7;2
-2014;2014M08;siauliu m. sav.;14;1;20;0
+2014;2014M08;Siauliu m. sav.;14;1;20;0
 2014;2014M08;siauliu r. sav.;8;0;10;0
 2014;2014M08;Taurages apskritis;6;0;6;1
 2014;2014M08;Jurbarko r. sav.;1;0;1;0
@@ -4939,7 +4939,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2014;2014M09;Kelmes r. sav.;2;1;2;0
 2014;2014M09;Pakruojo r. sav.;1;0;1;0
 2014;2014M09;Radviliskio r. sav.;0;0;0;0
-2014;2014M09;siauliu m. sav.;9;0;10;0
+2014;2014M09;Siauliu m. sav.;9;0;10;0
 2014;2014M09;siauliu r. sav.;2;0;2;0
 2014;2014M09;Taurages apskritis;8;1;12;0
 2014;2014M09;Jurbarko r. sav.;2;0;3;0
@@ -5011,7 +5011,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2014;2014M10;Kelmes r. sav.;3;0;3;0
 2014;2014M10;Pakruojo r. sav.;2;0;2;0
 2014;2014M10;Radviliskio r. sav.;1;0;1;0
-2014;2014M10;siauliu m. sav.;12;1;14;0
+2014;2014M10;Siauliu m. sav.;12;1;14;0
 2014;2014M10;siauliu r. sav.;6;0;8;0
 2014;2014M10;Taurages apskritis;11;2;11;0
 2014;2014M10;Jurbarko r. sav.;4;0;4;0
@@ -5083,7 +5083,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2014;2014M11;Kelmes r. sav.;2;0;2;0
 2014;2014M11;Pakruojo r. sav.;2;0;2;0
 2014;2014M11;Radviliskio r. sav.;4;0;5;1
-2014;2014M11;siauliu m. sav.;10;0;8;2
+2014;2014M11;Siauliu m. sav.;10;0;8;2
 2014;2014M11;siauliu r. sav.;0;0;0;0
 2014;2014M11;Taurages apskritis;7;2;8;2
 2014;2014M11;Jurbarko r. sav.;0;0;0;0
@@ -5155,7 +5155,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2014;2014M12;Kelmes r. sav.;4;0;7;0
 2014;2014M12;Pakruojo r. sav.;2;0;5;0
 2014;2014M12;Radviliskio r. sav.;5;1;3;2
-2014;2014M12;siauliu m. sav.;20;2;20;0
+2014;2014M12;Siauliu m. sav.;20;2;20;0
 2014;2014M12;siauliu r. sav.;10;1;9;1
 2014;2014M12;Taurages apskritis;8;0;7;1
 2014;2014M12;Jurbarko r. sav.;1;0;1;0
@@ -5227,7 +5227,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2015;2015M01;Kelmes r. sav.;3;1;8;0
 2015;2015M01;Pakruojo r. sav.;2;0;2;0
 2015;2015M01;Radviliskio r. sav.;1;0;2;0
-2015;2015M01;siauliu m. sav.;12;0;13;1
+2015;2015M01;Siauliu m. sav.;12;0;13;1
 2015;2015M01;siauliu r. sav.;7;0;7;0
 2015;2015M01;Taurages apskritis;10;1;10;2
 2015;2015M01;Jurbarko r. sav.;0;0;0;0
@@ -5299,7 +5299,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2015;2015M02;Kelmes r. sav.;3;1;2;1
 2015;2015M02;Pakruojo r. sav.;0;0;0;0
 2015;2015M02;Radviliskio r. sav.;3;1;2;1
-2015;2015M02;siauliu m. sav.;6;0;7;0
+2015;2015M02;Siauliu m. sav.;6;0;7;0
 2015;2015M02;siauliu r. sav.;6;1;4;2
 2015;2015M02;Taurages apskritis;5;0;8;0
 2015;2015M02;Jurbarko r. sav.;2;0;2;0
@@ -5371,7 +5371,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2015;2015M03;Kelmes r. sav.;2;0;2;1
 2015;2015M03;Pakruojo r. sav.;0;0;0;0
 2015;2015M03;Radviliskio r. sav.;3;0;3;0
-2015;2015M03;siauliu m. sav.;6;1;6;0
+2015;2015M03;Siauliu m. sav.;6;1;6;0
 2015;2015M03;siauliu r. sav.;5;0;5;0
 2015;2015M03;Taurages apskritis;5;0;5;1
 2015;2015M03;Jurbarko r. sav.;1;0;0;1
@@ -5443,7 +5443,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2015;2015M04;Kelmes r. sav.;1;0;1;0
 2015;2015M04;Pakruojo r. sav.;0;0;0;0
 2015;2015M04;Radviliskio r. sav.;4;1;5;1
-2015;2015M04;siauliu m. sav.;10;2;10;0
+2015;2015M04;Siauliu m. sav.;10;2;10;0
 2015;2015M04;siauliu r. sav.;4;0;4;0
 2015;2015M04;Taurages apskritis;4;0;4;0
 2015;2015M04;Jurbarko r. sav.;1;0;1;0
@@ -5515,7 +5515,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2015;2015M05;Kelmes r. sav.;5;0;11;0
 2015;2015M05;Pakruojo r. sav.;0;0;0;0
 2015;2015M05;Radviliskio r. sav.;3;1;10;0
-2015;2015M05;siauliu m. sav.;15;0;18;0
+2015;2015M05;Siauliu m. sav.;15;0;18;0
 2015;2015M05;siauliu r. sav.;7;1;8;0
 2015;2015M05;Taurages apskritis;7;1;6;2
 2015;2015M05;Jurbarko r. sav.;2;0;1;1
@@ -5587,7 +5587,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2015;2015M06;Kelmes r. sav.;5;0;6;0
 2015;2015M06;Pakruojo r. sav.;2;0;2;0
 2015;2015M06;Radviliskio r. sav.;4;0;4;0
-2015;2015M06;siauliu m. sav.;18;1;19;1
+2015;2015M06;Siauliu m. sav.;18;1;19;1
 2015;2015M06;siauliu r. sav.;1;0;1;0
 2015;2015M06;Taurages apskritis;8;0;10;1
 2015;2015M06;Jurbarko r. sav.;3;0;4;0
@@ -5659,7 +5659,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2015;2015M07;Kelmes r. sav.;2;0;2;0
 2015;2015M07;Pakruojo r. sav.;2;0;1;1
 2015;2015M07;Radviliskio r. sav.;3;1;6;0
-2015;2015M07;siauliu m. sav.;5;0;4;1
+2015;2015M07;Siauliu m. sav.;5;0;4;1
 2015;2015M07;siauliu r. sav.;7;1;14;0
 2015;2015M07;Taurages apskritis;8;2;10;0
 2015;2015M07;Jurbarko r. sav.;4;1;5;0
@@ -5731,7 +5731,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2015;2015M08;Kelmes r. sav.;3;0;4;1
 2015;2015M08;Pakruojo r. sav.;1;1;1;0
 2015;2015M08;Radviliskio r. sav.;4;1;4;0
-2015;2015M08;siauliu m. sav.;18;0;20;0
+2015;2015M08;Siauliu m. sav.;18;0;20;0
 2015;2015M08;siauliu r. sav.;4;1;6;0
 2015;2015M08;Taurages apskritis;12;2;17;2
 2015;2015M08;Jurbarko r. sav.;3;0;6;1
@@ -5803,7 +5803,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2015;2015M09;Kelmes r. sav.;5;0;5;1
 2015;2015M09;Pakruojo r. sav.;1;0;1;0
 2015;2015M09;Radviliskio r. sav.;2;1;1;1
-2015;2015M09;siauliu m. sav.;10;3;13;0
+2015;2015M09;Siauliu m. sav.;10;3;13;0
 2015;2015M09;siauliu r. sav.;5;2;10;0
 2015;2015M09;Taurages apskritis;5;0;4;1
 2015;2015M09;Jurbarko r. sav.;2;0;1;1
@@ -5875,7 +5875,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2015;2015M10;Kelmes r. sav.;4;1;7;0
 2015;2015M10;Pakruojo r. sav.;0;0;0;0
 2015;2015M10;Radviliskio r. sav.;1;0;1;0
-2015;2015M10;siauliu m. sav.;16;2;18;0
+2015;2015M10;Siauliu m. sav.;16;2;18;0
 2015;2015M10;siauliu r. sav.;4;2;4;1
 2015;2015M10;Taurages apskritis;6;2;5;1
 2015;2015M10;Jurbarko r. sav.;2;2;2;0
@@ -5947,7 +5947,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2015;2015M11;Kelmes r. sav.;0;0;0;0
 2015;2015M11;Pakruojo r. sav.;2;0;1;1
 2015;2015M11;Radviliskio r. sav.;6;0;9;0
-2015;2015M11;siauliu m. sav.;5;0;8;0
+2015;2015M11;Siauliu m. sav.;5;0;8;0
 2015;2015M11;siauliu r. sav.;4;0;2;2
 2015;2015M11;Taurages apskritis;3;0;5;0
 2015;2015M11;Jurbarko r. sav.;0;0;0;0
@@ -6019,7 +6019,7 @@ Metai;Data;Vieta;Visi keliu eismo ivykiai;Del neblaiviu vairuotoju kaltes;Suzeis
 2015;2015M12;Kelmes r. sav.;3;0;3;1
 2015;2015M12;Pakruojo r. sav.;3;1;4;0
 2015;2015M12;Radviliskio r. sav.;4;0;4;1
-2015;2015M12;siauliu m. sav.;13;0;13;0
+2015;2015M12;Siauliu m. sav.;13;0;13;0
 2015;2015M12;siauliu r. sav.;2;0;3;0
 2015;2015M12;Taurages apskritis;11;1;11;1
 2015;2015M12;Jurbarko r. sav.;1;0;1;0
