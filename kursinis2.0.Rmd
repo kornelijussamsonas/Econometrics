@@ -1,11 +1,45 @@
 ---
-title: "Įskaitinių eismo įvykių Lietuvos keliuose analizė"
-author: "Kornelijus Samsonas, Linas Šyvis"
 output:
   pdf_document:
     latex_engine: xelatex
   html_document: default
 ---
+\begin{titlepage}
+
+\centerline{\bf \large Vilniaus Universitetas}
+\bigskip
+\centerline{\large \textbf{Matematikos ir informatikos fakultetas}}
+\bigskip
+\centerline{\large \textbf{Ekonometrinės analizės katedra}}
+
+\vskip 150pt
+\centerline{\bf \Large \textbf{Kursinis darbas}}
+\vskip 50pt
+\begin{center}
+    {\bf \LARGE Įskaitinių eismo įvykių Lietuvos keliuose analizė}
+\end{center}
+
+\vskip 150pt
+\centerline{\Large \textbf{Atliko: Linas Šyvis ir Kornelijus Samsonas}}
+\vskip 30pt
+\centerline{\Large \textbf{Vadovas: prof. Vydas Čekanavičius}}
+\vskip 120pt
+\centerline{\large \textbf{VILNIUS 2016}}
+%\newpage
+\end{titlepage}
+
+\textwidth 6.5in
+\textheight 9.00in
+
+\renewcommand{\contentsname}{Turinys}
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+
+
+
+\section{Įvadas}
+
 
 **Reikalingi užduotims paketai.**
 ```{r, message=F, warning=F}
