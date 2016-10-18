@@ -150,7 +150,7 @@ names(tukstgyv)<-sprintf(miestai)
 ```
 
 **Brėžiame grafiką.**
-```{r, warning=F, tidy = T}
+```{r}
 plot(0, type = "n", xlim = c(2003,2015), ylim = c(0,0.3), yaxs="i", xaxs="i", main = "Įvykių skaičius 1000-iui gyventojų", ylab = "Įvykių sk. 1000 gyv.", xlab = "Laikas", axes=F)
 par(xaxp=c(2003, 2015, 12), yaxp=c(0, 0.3, 6))
 axis(1)
@@ -312,6 +312,8 @@ cor(kor1)
 
 Palyginti zuvusiu/suzeistu menesinius vidurkius tarp laikotarpiu ir vietu.
 Ar skiriasi ivykiu skaicius nakti ir diena?
+
+\newpage
 
 #Literatūra
 
