@@ -5,6 +5,7 @@ output:
     latex_engine: xelatex
   html_document: default
 ---
+
 \begin{titlepage}
 
 \centerline{\bf \large Vilniaus Universitetas}
@@ -36,6 +37,14 @@ output:
 \tableofcontents
 \thispagestyle{empty}
 \newpage
+
+\section{Santrauka}
+
+Darbe nagrinėjami 2003-2015m. laikotarpyje registruoti įskaitiniai eismo įvykiai Lietuvos keliuose. Duomenyse pastebimi egzistuojantys ryškūs eismo įvykių skirtumai didžiuosiuose Lietuvos miestuose, bei stipri fliuktuacija skirtingais laikotarpiais. Nagrinėjant duomenis įvairiais skerspjūviais gauti rezultatai atskleidžia įvairias priemones ir priežastis, dėl kurių atsiranda šie skirtumai.
+
+\section{Įvadas}
+
+
 
 **Reikalingi užduotims paketai.**
 ```{r, message=F, warning=F}
@@ -317,9 +326,14 @@ Ar skiriasi ivykiu skaicius nakti ir diena?
 
 \newpage
 
-#Literatūra
+\section{Išvados}
+
+\newpage
+
+\section{Literatūra}
 
 * https://www.epolicija.lt/atviri-duomenys
 * http://osp.stat.gov.lt
 * http://www.lakd.lt
 * http://www.lkpt.lt
+
