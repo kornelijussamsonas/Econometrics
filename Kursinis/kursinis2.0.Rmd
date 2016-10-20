@@ -34,13 +34,18 @@ output:
 \renewcommand{\contentsname}{Turinys}
 \tableofcontents
 \thispagestyle{empty}
+
 \newpage
 
+\begin{center}
 \section{Santrauka}
+\end{center}
 
-Darbe nagrinėjami 2003-2015m. laikotarpyje registruoti įskaitiniai eismo įvykiai Lietuvos keliuose. Duomenyse pastebimi egzistuojantys ryškūs eismo įvykių skirtumai didžiuosiuose Lietuvos miestuose, bei stipri fliuktuacija skirtingais laikotarpiais. Nagrinėjant duomenis įvairiais skerspjūviais gauti rezultatai atskleidžia įvairias priemones ir priežastis, dėl kurių atsiranda šie skirtumai.
+Darbe nagrinėjami 2003-2015m. laikotarpyje registruoti įskaitiniai eismo įvykiai Lietuvos keliuose. Duomenyse pastebimi egzistuojantys ryškūs eismo įvykių skirtumai didžiuosiuose Lietuvos miestuose, bei stipri fliuktuacija skirtingais laikotarpiais. Nagrinėjant duomenis įvairiais skerspjūviais gauti rezultatai atskleidžia įvairias priemones ir priežastis, dėl kurių atsiranda šie skirtumai. Darbo tikslas parodyti, kad Vilniaus vairuotojai vairuoja geriau.
+
 
 \section{Įvadas}
+
 
 **Reikalingi užduotims paketai.**
 ```{r, message=F, warning=F}
@@ -146,16 +151,24 @@ names(tukstgyv)<-sprintf(miestai)
 
 ```
 
+
 **Brėžiame grafiką.**
 ```{r}
 plot(0, type = "n", xlim = c(2003,2015), ylim = c(0,0.3), yaxs="i", xaxs="i", main = "Įvykių skaičius 1000-iui gyventojų", ylab = "Įvykių sk. 1000 gyv.", xlab = "Laikas", axes=F)
 par(xaxp=c(2003, 2015, 12), yaxp=c(0, 0.3, 6))
 axis(1)
 axis(2)
-for(i in 1:5)
-  lines(tukstgyv[,i], col = i, lwd = 1)
+for(i in 4:5)
+  lines((tukstgyv[,i] ), col = i, lwd = 1)
+lines((tukstgyv[,1] ), col = 1, lwd = 1)
+lines((tukstgyv[,2] ), col = 2, lwd = 1)
+lines((tukstgyv[,3] ), col = 3, lwd = 1)
+lines((tukstgyv[,4] ), col = 4, lwd = 1)
+lines((tukstgyv[,7] ), col = 7, lwd = 1)
 legend("topright", col = c(1:5), lty = 1, lwd = 1, legend = c("Vilnius", "Kaunas", "Klaipėda", "Šiauliai", "Panevėžys"), pt.cex = 1, cex = 0.45, text.width = 1)
 ```
+
+Grafike matomas eismo įvykių augimo trendas nuo 2003m. iki 2007m., toliau trendas pasikeičia ir įvykių skaičius pradeda mažėti ir apie 2011m. stabilizuojasi ir fliuktuoja panašiam lygyje.
 
 [Reikalingi komentarai]
 **Pagalbiniai stulpeliai**
@@ -332,7 +345,6 @@ Ar skiriasi ivykiu skaicius nakti ir diena?
 \section{Išvados}
 
 \newpage
-
 
 \section{Literatūra}
 
