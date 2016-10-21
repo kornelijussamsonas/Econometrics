@@ -335,6 +335,12 @@ kor1[,4] <- as.numeric(levels(kor1[,4]))[kor1[,4]]
 cor(kor1)
 ```
 
+# Įvykių skaičiau modeliavimas
+
+```{r}
+mod<- lm(Keliu_eismo_ivykiu_skaicius~Gyventoju_tankumas+Auto_sk_1k_gyv+Islaidos_keliams_mln_eur+vidutine_95_bezino_kaina+vidutine_dyzelino_kaina+gryno_alko_suvartojimas_gyventojui_litrais,data= kor)
+```
+
 
 Palyginti zuvusiu/suzeistu menesinius vidurkius tarp laikotarpiu ir vietu.
 Ar skiriasi ivykiu skaicius nakti ir diena?
@@ -352,3 +358,4 @@ Ar skiriasi ivykiu skaicius nakti ir diena?
 * http://osp.stat.gov.lt
 * http://www.lakd.lt
 * http://www.lkpt.lt
+
