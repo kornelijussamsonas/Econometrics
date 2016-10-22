@@ -41,7 +41,7 @@ output:
 \section{Santrauka}
 \end{center}
 
-Darbe nagrinėjami 2003-2015m. laikotarpyje registruoti įskaitiniai eismo įvykiai Lietuvos keliuose. Duomenyse pastebimi egzistuojantys ryškūs eismo įvykių skirtumai didžiuosiuose Lietuvos miestuose, bei stipri fliuktuacija skirtingais laikotarpiais. Nagrinėjant duomenis įvairiais skerspjūviais gauti rezultatai atskleidžia įvairias priemones ir priežastis, dėl kurių atsiranda šie skirtumai. Darbo tikslas parodyti, kad Vilniaus vairuotojai vairuoja geriau.
+Darbe nagrinėjami 2003-2015m. laikotarpyje registruoti įskaitiniai eismo įvykiai Lietuvos keliuose. Duomenyse pastebimi egzistuojantys ryškūs eismo įvykių skirtumai didžiuosiuose Lietuvos miestuose, bei stipri fliuktuacija skirtingais laikotarpiais. Nagrinėjant duomenis įvairiais skerspjūviais gauti rezultatai atskleidžia įvairias priemones ir priežastis, dėl kurių atsiranda šie skirtumai. Darbo tikslas parodyti, kad Vilniaus vairuotojai vairuoja geriau. Sudaroma regresija leis geriau suprasti, kaip ekonominiai, socialiniai ir politiniai veiksniai veikia įskaitinių eismo įvykių skaičių Lietuvoje.
 
 
 \section{Įvadas}
@@ -158,17 +158,31 @@ plot(0, type = "n", xlim = c(2003,2015), ylim = c(0,0.3), yaxs="i", xaxs="i", ma
 par(xaxp=c(2003, 2015, 12), yaxp=c(0, 0.3, 6))
 axis(1)
 axis(2)
-for(i in 4:5)
+for(i in 1:5)
   lines((tukstgyv[,i] ), col = i, lwd = 1)
 lines((tukstgyv[,1] ), col = 1, lwd = 1)
 lines((tukstgyv[,2] ), col = 2, lwd = 1)
 lines((tukstgyv[,3] ), col = 3, lwd = 1)
 lines((tukstgyv[,4] ), col = 4, lwd = 1)
-lines((tukstgyv[,7] ), col = 7, lwd = 1)
+lines((tukstgyv[,5] ), col = 6, lwd = 1)
 legend("topright", col = c(1:5), lty = 1, lwd = 1, legend = c("Vilnius", "Kaunas", "Klaipėda", "Šiauliai", "Panevėžys"), pt.cex = 1, cex = 0.45, text.width = 1)
 ```
 
-Grafike matomas eismo įvykių augimo trendas nuo 2003m. iki 2007m., toliau trendas pasikeičia ir įvykių skaičius pradeda mažėti ir apie 2011m. stabilizuojasi ir fliuktuoja panašiam lygyje.
+Grafike matomas eismo įvykių augimo trendas nuo 2003m. iki 2007m., toliau trendas pasikeičia ir įvykių skaičius pradeda mažėti ir apie 2011m. stabilizuojasi ir fliuktuoja panašiam lygyje. 
+
+Vilniaus m. sav. stebimas įskaitinių eismo įvykių mažėjimas nuo 2006m iki 2010m. vėlesniais metais įvykių lygis išlieka stabilus ir nesikeičia.
+
+Kauno m. sav.  stebimas įvykių augimas nuo 2003m. iki 2007m.. Mažėjimo tendencija prasidėjusi apie 2007m. vidurį baigiasi 2011m. viduryje. 2012-2014m. laikotarpyje stebimas įvykių padidėjimas
+
+Klaipėdos m. sav. įvykių skaičius 2003-2008m. nežymiai augo, 2008-2010m. laikotarpyje nežymiai sumažėjo ir laikėsi panašus įvykių skaičius iki 2015m..
+
+Šiaulių m. sav. stebimi dideli stabilūs svyravimai 2003-2008m.. Įvykių skaičius pradeda mažėti 2008-2010m. ir išlieka stabilus iki 2012m., nuo 2012m. registruojamas staigus eismo įvykių augimas, kuris grįžina įvykių skaičių prie pradinio lygio esančio 2003-2003m. laikotarpyje panašus lygis išlieka iki pat 2015m.
+
+Panevežio m. sav. stebimas įvykių augimas 2003-2007m. laikotarpyje. Eismo įvykiu skaičius nežymiai sumažėja 2007-2009m. laikotarpyje. Panažus eismo įvykių skaičius išmlieka iki pat 2015m..
+
+Vilniaus m. sav. išsiskiria nuo kitų didžiųjų miestų, jog eismo įvykių mažėjimas prasideda metais anksčiau ir vyksta daug staigiau nei kituose miestuose. Po eismo įvykių sumažėjimo nėra ryškaus grįžimo prie pradinio įvykių kiekio, kas yra įprasta kitiems miestams.
+
+Grafike matome stiprų skirtumą 2008-2010m. metų laikotarpyje tarp Vilniaus ir Kauno, kas nebudinga nei vienam iš likusių miestų.
 
 [Reikalingi komentarai]
 **Pagalbiniai stulpeliai**
@@ -349,6 +363,8 @@ Ar skiriasi ivykiu skaicius nakti ir diena?
 \newpage
 
 \section{Išvados}
+
+Duomenyse stebimas ryškus Vilniaus m. sav. pranašumas prieš kitus didžiuosius Lietuvos miestus. Įvykių skaičius Vilnaius mieste yra stabilesnis, įvykių kreivė taip staigiai nešokinėja. Pritaikius tam priemones įvykių skaičius daug greičiau sumažėjo, priemonių poveikis buvo efektivesnis.
 
 \newpage
 
