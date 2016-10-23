@@ -1,0 +1,322 @@
+---
+output:
+  pdf_document:
+    latex_engine: xelatex
+  html_document: default
+---
+\begin{titlepage}
+
+\centerline{\bf \large Vilniaus Universitetas}
+\bigskip
+\centerline{\large \textbf{Matematikos ir informatikos fakultetas}}
+\bigskip
+\centerline{\large \textbf{Ekonometrinės analizės katedra}}
+
+\vskip 150pt
+\centerline{\bf \Large \textbf{Kursinis darbas}}
+\vskip 50pt
+\begin{center}
+    {\bf \LARGE Įskaitinių eismo įvykių Lietuvos keliuose analizė}
+\end{center}
+
+\vskip 150pt
+\centerline{\Large \textbf{Atliko: Linas Šyvis ir Kornelijus Samsonas}}
+\vskip 30pt
+\centerline{\Large \textbf{Vadovas: prof. Vydas Čekanavičius}}
+\vskip 120pt
+\centerline{\large \textbf{VILNIUS 2016}}
+%\newpage
+\end{titlepage}
+
+\textwidth 6.5in
+\textheight 9.00in
+
+\renewcommand{\contentsname}{Turinys}
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+
+\begin{center}
+\section{Santrauka}
+\end{center}
+
+Darbe nagrinėjami 2003-2015m. laikotarpyje registruoti įskaitiniai eismo įvykiai Lietuvos keliuose. Duomenyse pastebimi egzistuojantys ryškūs eismo įvykių skirtumai didžiuosiuose Lietuvos miestuose, bei stipri fliuktuacija skirtingais laikotarpiais. Nagrinėjant duomenis įvairiais skerspjūviais gauti rezultatai atskleidžia įvairias priemones ir priežastis, dėl kurių atsiranda šie skirtumai. Darbo tikslas parodyti, kad Vilniaus vairuotojai vairuoja geriau. Sudaroma regresija leis geriau suprasti, kaip ekonominiai, socialiniai ir politiniai veiksniai veikia įskaitinių eismo įvykių skaičių Lietuvoje.
+
+
+\section{Įvadas}
+
+**Reikalingi užduotims paketai.**
+```{r, message=F, warning=F}
+library(fpp)
+library(dplyr)
+```
+
+
+**Nuskaitome duomenis.**
+```{r}
+rawdata <- read.csv2("2003-2015.csv", header = T)
+gyventojai <- read.csv2("gyventojai.csv", header = T, skip = 1)
+kor <- read.csv2("koreliacijos.csv", header = T)
+```
+
+#Tvarkome duomenis
+
+**Paliekame tik 5 didžiuosius miestus**
+```{r, tidy = T}
+miestai <- c("Vilniaus m. sav.", "Kauno m. sav.", "Klaipedos m. sav.", "Siauliu m. sav.", "Panevezio m. sav.")
+data <- subset(rawdata, Vieta %in% miestai)
+```
+
+Turime stulpelius "Gimimo data" ir "Stazas". Jų reikšmės tikėtinai stipriai koreliuoja, patikrinkime. Pertvarkysime stulpelio "Gimimo data" reikšmes taip, kad matytume eismo įvykio dalyvio amžių ir patikrinsime amžiaus koreliaciją su "Stažo" reikšmėmis.
+
+**Stulpelį "Gimimo data" pertvarkome į "Amzius".**
+```{r, tidy = T}
+Amzius <- as.numeric(format(Sys.Date(), format="%Y")) - as.numeric(format(as.Date(data$Gimimo_data, format="%Y"), format = "%Y"))
+data <- cbind(data, Amzius)
+```
+
+Dabar turime eismo įvykių dalyvių amžių, kuro koreliaciją su stažu galime patikrinti.
+
+**Patikrinsime koreliaciją.**
+```{r}
+sum(is.na(data$Stazas))
+sum(is.na(data$Amzius))
+cor(data$Amzius, data$Stazas, use = "pairwise.complete.obs")
+```
+
+#Tvarkom Blaivumo stulpelį
+Matome, kad stulpelį "Blaivumas" sudaro 6 skirtingos reikšmės. Sutrauksime jas visas į "Blaivus" ir "Neblaivus".
+```{r, tidy = T}
+data[data[, "Blaivumas"] %in% c("Apsvaiges nuo narkotiniu, psichotropiniu ar kitu psichika veikianciu medziagu", "Atsisake buti patikrintas", "Neblaivus"), "Blaivumas"] <- "Neblaivus"
+data$Blaivumas <- factor(data$Blaivumas)
+table(data$Blaivumas)
+```
+
+#Tvarkom Meteo salygų stulp.
+```{r}
+data[data[, "Meteorologines_salygos"] == "Lijundra", "Meteorologines_salygos"] <- "Lietus"
+data[data[, "Meteorologines_salygos"] == "Puga", "Meteorologines_salygos"] <- "Sniegas, krusa"
+data$Meteorologines_salygos <- factor(data$Meteorologines_salygos)
+table(data$Meteorologines_salygos)
+```
+
+
+Kai kurie stulpeliai turi NA reikšmių, reikia jas pašalinti.
+```{r, tidy = T}
+salinamieji <- c("Lytis", "Blaivumas")
+ndata <- data[complete.cases(data[salinamieji]),]
+sapply(lapply(ndata, is.na), sum)
+```
+
+Pašalinome NA reikšmes (stulpeliuose, kuriuose NA > 5000, NA palikome, kad neprarastume didžiosios dalies duomenų).
+
+5 didžiausius Lietuvos miestus lyginsime pagal įvykius 1000-iui gyventojų.
+
+**Sukuriame rodiklį 1000 gyventojų.**
+```{r}
+tukst <- gyventojai[,3]/1000
+gyventojai <- cbind(gyventojai, tukst)
+```
+
+#Įvykių sk. 1000-iui gyventojų didžiausiuose miestuose grafikas.
+
+**Skaičiuojame mėnesinį įvykių skaičių.
+```{r, tidy = T}
+by_month <- group_by(data, format(as.Date(data$Data, format="%Y-%m-%d"),"%Y-%m"), Vieta)
+agreguoti <- summarise(by_month, sum(Kaltas), sum(Dalyviu_skaicius), sum(Suzeistu_skaicius), sum(Zuvusiu_skaicius))
+colnames(agreguoti) <- list("Data", "Vieta", "Ivykiai", "Dalyviai", "Suzeisti", "Zuve")
+```
+
+
+**Išsaugome didžiųjų miestų įvykių skaičių ir gyventojų laiko eilutes.
+```{r}
+ivykiusk <- function(i)
+  ts(agreguoti[agreguoti$Vieta == i, "Ivykiai"], start=c(2003,1), frequency = 12)
+
+gyvsk <- function(i)
+  ts(rep(gyventojai[gyventojai$Vieta == i, "Visi"], each = 12), start = c(2003,1), frequency = 12)
+
+ivykiai <- sapply(miestai, ivykiusk)
+names(ivykiai)<-sprintf(miestai)
+gyven <- sapply(miestai, gyvsk)
+names(gyven)<-sprintf(miestai)
+
+tukst <- function(i)
+  ivykiai[,i] * 1000 / gyven[,i]
+
+tukstgyv <- ts(sapply(miestai, tukst), start = c(2003,1), frequency = 12)
+names(tukstgyv)<-sprintf(miestai)
+
+```
+
+**Brėžiame grafiką.**
+```{r}
+plot(0, type = "n", xlim = c(2003,2015), ylim = c(0,0.3), yaxs="i", xaxs="i", main = "Įvykių skaičius 1000-iui gyventojų", ylab = "Įvykių sk. 1000 gyv.", xlab = "Laikas", axes=F)
+par(xaxp=c(2003, 2015, 12), yaxp=c(0, 0.3, 6))
+axis(1)
+axis(2)
+for(i in 1:5)
+  lines(tukstgyv[,i], col = i, lwd = 1)
+legend("topright", col = c(1:5), lty = 1, lwd = 1, legend = c("Vilnius", "Kaunas", "Klaipėda", "Šiauliai", "Panevėžys"), pt.cex = 1, cex = 0.45, text.width = 1)
+```
+
+Grafike matomas eismo įvykių augimo trendas nuo 2003m. iki 2007m., toliau trendas pasikeičia ir įvykių skaičius pradeda mažėti ir apie 2011m. stabilizuojasi ir fliuktuoja panašiam lygyje. 
+
+Vilniaus m. sav. stebimas įskaitinių eismo įvykių mažėjimas nuo 2006m iki 2010m. vėlesniais metais įvykių lygis išlieka stabilus ir nesikeičia.
+
+Kauno m. sav.  stebimas įvykių augimas nuo 2003m. iki 2007m.. Mažėjimo tendencija prasidėjusi apie 2007m. vidurį baigiasi 2011m. viduryje. 2012-2014m. laikotarpyje stebimas įvykių padidėjimas
+
+Klaipėdos m. sav. įvykių skaičius 2003-2008m. nežymiai augo, 2008-2010m. laikotarpyje nežymiai sumažėjo ir laikėsi panašus įvykių skaičius iki 2015m..
+
+Šiaulių m. sav. stebimi dideli stabilūs svyravimai 2003-2008m.. Įvykių skaičius pradeda mažėti 2008-2010m. ir išlieka stabilus iki 2012m., nuo 2012m. registruojamas staigus eismo įvykių augimas, kuris grįžina įvykių skaičių prie pradinio lygio esančio 2003-2003m. laikotarpyje panašus lygis išlieka iki pat 2015m.
+
+Panevežio m. sav. stebimas įvykių augimas 2003-2007m. laikotarpyje. Eismo įvykiu skaičius nežymiai sumažėja 2007-2009m. laikotarpyje. Panažus eismo įvykių skaičius išmlieka iki pat 2015m..
+
+Vilniaus m. sav. išsiskiria nuo kitų didžiųjų miestų, jog eismo įvykių mažėjimas prasideda metais anksčiau ir vyksta daug staigiau nei kituose miestuose. Po eismo įvykių sumažėjimo nėra ryškaus grįžimo prie pradinio įvykių kiekio, kas yra įprasta kitiems miestams.
+
+Grafike matome stiprų skirtumą 2008-2010m. metų laikotarpyje tarp Vilniaus ir Kauno, kas nebudinga nei vienam iš likusių miestų.
+
+
+CHIKVADRATAI IR BLOKUOTA ANOVA
+=================================================================
+
+**Pagalbiniai stulpeliai**
+```{r}
+neblaivus <- ndata$Blaivumas == "Neblaivus"
+neblaivus <- neblaivus * 1
+diena <- ndata$Paros_metas == "Diena"
+diena <- diena * 1
+moteris <- ndata$Lytis == "Moteris"
+moteris <- moteris * 1
+asfaltas <- ndata$Dangos_rusis == "Asfaltbetonis, cementbetonis"
+asfaltas <- asfaltas * 1
+zvyras <- ndata$Dangos_rusis == "zvyrkelis"
+zvyras <- zvyras * 1
+slapia <- ndata$Dangos_bukle == "slapia"
+slapia <- slapia * 1
+giedra <- ndata$Meteorologines_salygos == "Giedra"
+giedra <- giedra * 1
+
+ndata <- cbind(ndata, neblaivus, diena, moteris, asfaltas, zvyras, slapia, giedra)
+```
+
+**Met-men**
+```{r}
+by_yearmon <- group_by(ndata, format(as.Date(ndata$Data, format="%Y-%m-%d"), "%Y-%m"), Vieta)
+metmen <- summarise(by_yearmon, sum(Kaltas), sum(neblaivus), sum(diena)/sum(Kaltas), sum(moteris)/sum(Kaltas), sum(asfaltas)/sum(Kaltas), sum(zvyras)/sum(Kaltas), sum(slapia)/sum(Kaltas), sum(giedra)/sum(Kaltas))
+colnames(metmen) <- list("Data", "Vieta", "Ivykiai", "Neblaivus", "Diena", "Moteris", "Asfaltas", "Zvyras", "Slapia_danga", "Giedra")
+
+mot <- function(i) 
+  ts(metmen[metmen[, "Vieta"] == i, "Moteris"], start = c(2003,1), frequency = 12)
+moter <- sapply(miestai, mot)
+
+slap <- function(i) 
+  ts(metmen[metmen[, "Vieta"] == i, "Slapia_danga"], start = c(2003,1), frequency = 12)
+sla <- sapply(miestai, slap)
+
+gied <- function(i) 
+  ts(metmen[metmen[, "Vieta"] == i, "Giedra"], start = c(2003,1), frequency = 12)
+gie <- sapply(miestai, gied)
+
+plot(0, type = "n", xlim = c(2003,2015), ylim = c(0,0.7), yaxs="i", xaxs="i", main = "Įvykių sk., kai negiedras dangus", ylab = "Įvykių sk.", xlab = "Laikas", axes=F)
+par(xaxp=c(2003, 2015, 12), yaxp=c(0, 0.7, 14))
+axis(1)
+axis(2)
+for(i in 1:5)
+  lines(ts((moter[,i]), start = c(2003,1), frequency = 12), col = i, lwd = 1)
+legend("topleft", col = c(1:5), lty = 1, lwd = 1, legend = c("Vilnius", "Kaunas", "Klaipėda", "Šiauliai", "Panevėžys"), pt.cex = 1, cex = 0.45, text.width = 1)
+
+
+```
+
+**Met**
+```{r}
+by_year <- group_by(ndata, format(as.Date(ndata$Data, format="%Y-%m-%d"), "%Y"), Vieta)
+met <- summarise(by_year, sum(Kaltas), sum(neblaivus)/sum(Kaltas), sum(diena)/sum(Kaltas), sum(moteris)/sum(Kaltas), sum(asfaltas)/sum(Kaltas), sum(zvyras)/sum(Kaltas), sum(slapia)/sum(Kaltas), sum(giedra)/sum(Kaltas))
+colnames(met) <- list("Data", "Vieta", "Ivykiai", "Neblaivus", "Diena", "Moteris", "Asfaltas", "Zvyras", "Slapia_danga", "Giedra")
+
+mot <- function(i) 
+  ts(met[met[, "Vieta"] == i, "Moteris"], start = c(2003,1), frequency = 1)
+moter <- sapply(miestai, mot)
+
+nebl <- function(i) 
+  ts(met[met[, "Vieta"] == i, "Neblaivus"], start = c(2003,1), frequency = 1)
+neb <- sapply(miestai, nebl)
+
+plot(0, type = "n", xlim = c(2003,2015), ylim = c(0,0.3), yaxs="i", xaxs="i", main = "Įvykių sk. dėl neblaiviu", ylab = "Įvykių sk.", xlab = "Laikas", axes=F)
+par(xaxp=c(2003, 2015, 12), yaxp=c(0, 0.3, 6))
+axis(1)
+axis(2)
+for(i in 1:5)
+  lines(ts(neb[,i], start = c(2003,1), frequency = 1), col = i, lwd = 1)
+legend("topleft", col = c(1:5), lty = 1, lwd = 1, legend = c("Vilnius", "Kaunas", "Klaipėda", "Šiauliai", "Panevėžys"), pt.cex = 1, cex = 0.45, text.width = 1)
+```
+
+```{r}
+
+lenteles <- function(i)
+matrix(c(as.matrix(met[met$Vieta == "Vilniaus m. sav.", i]), as.matrix(met[met$Vieta == "Kauno m. sav.", i]), as.matrix(met[met$Vieta == "Klaipedos m. sav.", i]), as.matrix(met[met$Vieta == "Siauliu m. sav.", i]), as.matrix(met[met$Vieta == "Panevezio m. sav.", i])), byrow = T)
+
+kintamieji <- c("Neblaivus", "Diena", "Moteris", "Slapia_danga", "Giedra")
+lentelex <- as.matrix(sapply(kintamieji, lenteles))
+colnames(lentelex) <- kintamieji
+
+metai <- as.factor(rep(rep(2003:2015), 5))
+miestas <- as.factor(rep(miestai, each = 13))
+uzkniso <- function(i){
+  lenta <- data.frame(metai, miestas, lentelex[,i])
+  mod <- aov(lentelex[,i] ~ miestas)
+  anova(mod)
+}
+lapply(1:5, uzkniso)
+```
+
+
+=====================================================================
+
+
+#Tikrinam įvykių priklausomybę nuo amžiaus
+```{r, eval=F, echo=F}
+stazas <- cut(data[,24], breaks = c(0, 10, 20, 30, 40, 50, 60))
+table(stazas)
+```
+
+
+#Forecastinam autoįvykius
+```{r, eval=F, echo=F}
+b <- ts(agreguoti[agreguoti[,3] == "Vilniaus m. sav.", 4], start=c(2009,1), frequency = 12)
+plot(b)
+```
+
+```{r, eval=F, echo=F}
+z <- auto.arima(b)
+plot(forecast(z, h = 12))
+#salinam sezona
+liek <- ts(z$residuals,start=c(2009,1), frequency = 12)
+stl <- stl(z$residuals, s.window="periodic")
+ser <- liek - stl$time.series[,"seasonal"]
+plot(ser)
+```
+
+
+# Įvykių skaičiau modeliavimas
+
+```{r}
+mod<- lm(Keliu_eismo_ivykiu_skaicius~Gyventoju_tankumas+Auto_sk_1k_gyv+Islaidos_keliams_mln_eur+vidutine_95_bezino_kaina+vidutine_dyzelino_kaina+gryno_alko_suvartojimas_gyventojui_litrais,data= kor)
+```
+
+
+\newpage
+
+\section{Išvados}
+
+Duomenyse stebimas ryškus Vilniaus m. sav. pranašumas prieš kitus didžiuosius Lietuvos miestus. Įvykių skaičius Vilnaius mieste yra stabilesnis, įvykių kreivė taip staigiai nešokinėja. Pritaikius tam priemones įvykių skaičius daug greičiau sumažėjo, priemonių poveikis buvo efektivesnis.
+
+\newpage
+
+\section{Literatūra}
+
+* https://www.epolicija.lt/atviri-duomenys
+* http://osp.stat.gov.lt
+* http://www.lakd.lt
+* http://www.lkpt.lt
