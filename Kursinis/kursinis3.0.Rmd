@@ -54,7 +54,6 @@ library(dplyr)
 
 
 ```{r, message=F, echo=F}
-setwd("C:/Users/Linas/Documents/GitHub/Econometrics/kursinis")
 rawdata <- read.csv2("2003-2015.csv", header = T)
 gyventojai <- read.csv2("gyventojai.csv", header = T, skip = 1)
 kor <- read.csv2("koreliacijos.csv", header = T)
@@ -141,27 +140,26 @@ names(tukstgyv)<-sprintf(miestai)
 plot(0, type = "n", xlim = c(2003,2015), ylim = c(0,0.3), yaxs="i", xaxs="i", main = "Įvykių skaičius 1000-iui gyventojų", ylab = "Įvykių sk. 1000 gyv.", xlab = "Laikas", axes=F)
 par(xaxp=c(2003, 2015, 12))
 axis(1)
-axis(2, at = seq(0,1,by=.1), labels = paste(100*seq(0,1,by=.1), "%"))
+axis(2)
 for(i in 1:length(miestai))
   lines(stl(tukstgyv[,i], s.window = "periodic")$time.series[,2], col = i, lwd = 1)
 legend("topright", col = c(1:5), lty = 1, lwd = 1, legend = c("Kauno m. sav.", "Klaipėdos m. sav.", "Panevėžio m. sav.", "Šiaulių m. sav.", "Vilniaus m. sav."), pt.cex = 1, cex = 0.6, text.width = 2)
 ```
 
-Grafike matomas eismo įvykių 1000-iui gyventojų augimo trendas 2003-2007 metais. Vėliau trendas pasikeičia, reikšmės pradeda mažėti, apie 2011 metus stabilizuojasi ir fliuktuoja panašiame lygyje. 
+Grafike matomas eismo įvykių 1000-iui gyventojų augimas 2003-2007 metais, šiame laikotarpyje įvykių skaičius vidutiniškai padėjo apie 4 procentinius punktus. 2007 metais įvyksta lūžis, kurio metu įvykiu skaičius visuose Lietuvos didžiuosiuose miestose mažėja iki 2011 metų. Likusiame laikotarpyje įviykių skaičius padidėja apie 3% ir fliuktuoja panašiame lygyje. 
 
-Vilniaus m. sav. matomas įskaitinių eismo įvykių 1000-iui gyventojų mažėjimas nuo 2006 metų iki 2010 metų. Vėlesniais metais įvykių lygis išlieka stabilus ir nesikeičia.
+Vilniaus m. sav. 2004-2005 metais įvykių skaičius padidėjo 3,5 procentiniais punktais. 2006-2010 metų laikotarpyje stebimas 11 procentinių punktų įskaitinių eismo įvykių 1000-iui gyv. sumažėjimas. 2011-2013 metais eismo įvykių skaičius padidėja 4 procentiniais punktais.
 
-Kauno m. sav. stebimas įvykių augimas nuo 2003 iki 2007 metų. Mažėjimo tendencija prasidėjusi apie 2007-ųjų vidurį baigiasi 2011-ųjų viduryje. 2012-2014 metais įvykių sk. 1000-iui gyventojų kyla.
+Kauno m. sav. 2003 iki 2007 metų laikotarpyje stebimas pats ryšiausias įvykių skaičiaus padidėjimas, registruojamas 6,5 procentinių punktų padidėjimas 1000-iui gyventojų . Mažėjimo tendencija prasidėjusi apie 2007-ųjų vidurį ir baigiasi 2011-ųjų viduryje, šiame laikotarpyje įvykių skaičius sumažėja 15 procantių punktų . 2012-2013 metais įvykių sk. 1000-iui gyventojų pakyla 3 procentiniais punktais, bet iki 2015 metų vėl sumažėja 1,5 procentiniais punktais.
 
-Klaipėdos m. sav. įvykių skaičius 2003-2008 metais nežymiai augo, 2008-2010 metais nežymiai sumažėjo ir laikėsi panašus iki 2015 metų.
+Klaipėdos m. sav. įvykių skaičius 2003-2008 metais padidėjo 5 procentiniais punktais. 2008-2010 laikotarpiu įvykių skaičius sumažėjo 6 procentiniais punktais ir su 1-2 procentiniu punktų fliuktuacija iki 2015 metų laikėsi panašiame lygyje.
 
-Šiaulių m. sav. 2003-2008 metais matomi dideli svyravimai. Įvykių skaičius pradėjo mažėti 2008-2010 metais. Veliau išliko stabilus iki 2012m., o nuo 2012 metų registruojamas staigus eismo įvykių 1000-iui gyventojų augimas, kuris grąžina įvykių skaičių prie pradinio lygio esančio 2003-2008 metais.
+Šiaulių m. sav. 2003-2005 metų laikotarpyje įvykių skaičius sumažėjo 2 procentiniais punktais, tačiau įvykiu skaičius ėmė didėti ir iki 2008m pakilo 3 procentiniais punktais. Įvykių skaičius pradėjo mažėti 2008-2010 metų laikotarpyje, stebimas 8 procentinių punktų pokytis. Nuo 2011 metų vidurio įvykiu skaičius pradėjo augti ir iki 2013 metų padidėjo 4 procentiniais punktais. 
 
-Panevežio m. sav. stebimas įvykių augimas 2003-2007 metais. Eismo įvykiu skaičius nežymiai sumažėja 2007-2009 metais. Panažus eismo įvykių skaičius išmlieka iki pat 2015 m.
+Panevežio m. sav. 2003-2007 metais įvykiu skaičius padidėja 5 procentiniais punktais.  2007-2010 laikotarpiu įvykių skaičius sumažėjo 7 procentiniais punktais ir su 1-2 procentiniu punktų fliuktuacija iki 2014 metų laikėsi panašiame lygyje.
 
-Vilniaus m. sav. išsiskiria nuo kitų didžiųjų miestų, jog eismo įvykių mažėjimas prasideda metais anksčiau ir vyksta daug staigiau nei kituose miestuose. Po eismo įvykių 1000-iui gyventojų kritimo reikšmės stabilizuojasi ir nekyla, kitaip nei kituose miestuose.
+Ryškiausi skirtumai pastebimi tarp Vilniaus ir Kauno miesto savivaldybių. Vilnius pasižymėjo mažesniu įvykių augimu, bei staigesnių ir didesniu įvykių sumažėjimu, tuo tarpu Kauno miesta judėjo priešinga kryptimi, įvykių skaičius išauga, o tolesnis jų mažėjimas taip pogi nėra toks spartus. Kiti nagrinėjami miestai yra  labai panašūs ir neišsiskiria vienas nuo kito.
 
-Grafike matome stiprų skirtumą 2008-2010 metais tarp Vilniaus ir Kauno, kas nebūdinga nei vienam iš likusių miestų.
 
 ```{r, message=F, echo=F}
 #kintamuju kurimas
@@ -226,7 +224,16 @@ axis(2, at = seq(0,1,by=.1), labels = paste(100*seq(0,1,by=.1), "%"))
 for(i in 1:length(miestai))
 lines(stl(ts((lent_neblaivus[,i]), start = c(2003,1), frequency = 12), s.window = "periodic")$time.series[,2], col = i, lwd = 1)
 legend("topleft", col = c(1:5), lty = 1, lwd = 1, legend = c("Kauno m. sav.", "Klaipėdos m. sav.", "Panevėžio m. sav.", "Šiaulių m. sav.", "Vilniaus m. sav."), cex = 0.5)
+```
 
+Ryškiausiai iškiria Kauno ir Vilniaus miesto savivaldybės. Kaunas pasižymi stabiliu ir mažiausiu įvykiu skaičiumi kuriuos sukėlė neblaivūs vairuotojai. Vilniaus miestas isšiskiria didžiausia neblaivių kaltininku dalimi nuo įvykusių įvykių. Kiti didieji miestai tarpusavyje fliuktuoja panašiai, ryškių išskirtinumų nepastebima.
+
+Vilniaus m. sav.  2003-2006 metų laikotarpyje neblaivių asmenų sukėlusių įskaitinius eismo įvykius dalis padidėjo 14 procentiniu punktų. 2006-2008 metu laikotarpyje neblaivių kaltininkų kiekis sumažėja 8 procentiniais punktais. 2010-2012 metų laikotarpyje neblaivių asmenų sukėlusių įskaitinius eismo įvykius dalis padidėjo 10 procentiniu punktų. 
+
+Kauno m. sav. 2003-2009 metų laikotarpyje neblaivių asmenų sukėlusių esimo įvykius sumažėjo 3 procentiniais punktas, tačiau nuo 2009 metų situacija pradėjo keistis ir 2015 metais neblaivių asmenų sukėlusių eismo įvykius dalis padidėjo 6 procentiniais punktais.
+
+
+```{r, echo=F}
 #naktis
 plot(0, type = "n", xlim = c(2003,2015), ylim = c(0.1,0.5), yaxs="i", xaxs="i", main = "Naktį sukeltų eismo įvykių dalis", ylab = "Įvykių sk. dalis", xlab = "Laikas", axes=F)
 par(xaxp=c(2003, 2015, 12))
@@ -235,7 +242,12 @@ axis(2, at = seq(0,1,by=.1), labels = paste(100*seq(0,1,by=.1), "%"))
 for(i in 1:length(miestai))
 lines(stl(ts((lent_naktis[,i]), start = c(2003,1), frequency = 12), s.window = "periodic")$time.series[,2], col = i, lwd = 1)
 legend("bottomleft", col = c(1:5), lty = 1, lwd = 1, legend = c("Kauno m. sav.", "Klaipėdos m. sav.", "Panevėžio m. sav.", "Šiaulių m. sav.", "Vilniaus m. sav."), cex = 0.5)
+```
 
+Ryškus skirtumas stebimas 2003-2007m laikotarpyje Vilniaus m. sav.. Eismo įvykiai šiame mieste tamsiu paros įvyksta nuo 3 iki 8 procentiniu puntų dažniau. Nuo 2009 metu eismo įvykių skaičius fliutujant mažėjo tačiau beveik visuose taškuose išsilaikė aukščiau kitų didžiųjų miestų.
+
+
+```{r, echo=F}
 #moterys
 plot(0, type = "n", xlim = c(2003,2015), ylim = c(0.1,0.4), yaxs="i", xaxs="i", main = "Moterų sukeltų eismo įvykių dalis", ylab = "Įvykių sk. dalis", xlab = "Laikas", axes=F)
 par(xaxp=c(2003, 2015, 12))
@@ -244,7 +256,12 @@ axis(2, at = seq(0,1,by=.1), labels = paste(100*seq(0,1,by=.1), "%"))
 for(i in 1:length(miestai))
 lines(stl(ts((lent_moteris[,i]), start = c(2003,1), frequency = 12), s.window = "periodic")$time.series[,2], col = i, lwd = 1)
 legend("topleft", col = c(1:5), lty = 1, lwd = 1, legend = c("Kauno m. sav.", "Klaipėdos m. sav.", "Panevėžio m. sav.", "Šiaulių m. sav.", "Vilniaus m. sav."), pt.cex = 1, cex = 0.5)
+```
 
+Visame laikotarpyje stebimas kylantis trendas, moterų kaltų sukėlusių eismo įvykius skaičius didėja, tačiau tai gali priklausyti, nuo keliu faktorių, pvz. vairuojančių moterų skaičiaus padidėjimas arba vyrų drausmingesnis vairavimas, nes įvykių skaičius ilguoju laikotarpiu sumažėjo.
+
+
+```{r, echo=F}
 #slapia danga
 plot(0, type = "n", xlim = c(2003,2015), ylim = c(0.0,0.5), yaxs="i", xaxs="i", main = "Eismo įvykių dalis ant šlapios dangos", ylab = "Įvykių sk. dalis", xlab = "Laikas", axes=F)
 par(xaxp=c(2003, 2015, 12))
@@ -253,7 +270,11 @@ axis(2, at = seq(0,1,by=.1), labels = paste(100*seq(0,1,by=.1), "%"))
 for(i in 1:length(miestai))
 lines(stl(ts((lent_slapia[,i]), start = c(2003,1), frequency = 12), s.window = "periodic")$time.series[,2], col = i, lwd = 1)
 legend("bottomright", col = c(1:5), lty = 1, lwd = 1, legend = c("Kauno m. sav.", "Klaipėdos m. sav.", "Panevėžio m. sav.", "Šiaulių m. sav.", "Vilniaus m. sav."), pt.cex = 1, cex = 0.5)
+```
 
+Stebimas ryškus skirtumas 2003-2009 metų laikotarpyje tarp Šiaulių m. sav. ir kitų didžiųjų miestų. Šliauliuose įvykių skaičius įvykusių esant šlapiai kelio dangai didesnes. Panevežio m. sav. stebimas įvykių mažėjimas ant šlapios kelio dangos 2005-2006 metų laikotarpyje, tačiau šis skaičius vėl atsistato, bet iki 2011 metų įvykių skaičius esant šlapiai kelio dangai išlieka vienas mažiausiu lyginant su kitais miestais.
+
+```{r, echo=F}
 #negiedra
 plot(0, type = "n", xlim = c(2003,2015), ylim = c(0.2,0.7), yaxs="i", xaxs="i", main = "Eismo įvykių dalis, kai negiedras dangus", ylab = "Įvykių sk. dalis", xlab = "Laikas", axes=F)
 par(xaxp=c(2003, 2015, 12))
@@ -263,6 +284,9 @@ for(i in 1:length(miestai))
 lines(stl(ts((lent_negiedra[,i]), start = c(2003,1), frequency = 12), s.window = "periodic")$time.series[,2], col = i, lwd = 1)
 legend("topleft", col = c(1:5), lty = 1, lwd = 1, legend = c("Kauno m. sav.", "Klaipėdos m. sav.", "Panevėžio m. sav.", "Šiaulių m. sav.", "Vilniaus m. sav."), pt.cex = 1, cex = 0.5)
 ```
+
+Vilniaus mieste, negiedru oru eismo įvykių skaičius yra stabilus, dėl to galima butų manyti, kad tai neturi žymaus poveikio. Dideli svyravimai mažesniuose miestuose kelia įtarimų, kad oro sąlygos daug labiau gali veikti vairuotojų vairavimą.
+
 
 ```{r, echo=F}
 #blokuoti anova
@@ -350,3 +374,4 @@ Duomenyse stebimas ryškus Vilniaus m. sav. pranašumas prieš kitus didžiuosiu
 \newpage
 
 \section{Priedas}
+
