@@ -40,7 +40,7 @@ output:
 \section{Santrauka}
 \end{center}
 
-Darbe nagrinėjami 2003-2015 metais registruoti įskaitiniai eismo įvykiai Lietuvos keliuose. Duomenyse pastebimi egzistuojantys ryškūs eismo įvykių skirtumai didžiuosiuose Lietuvos miestuose bei stipri fliuktuacija skirtingais laikotarpiais. Nagrinėjant duomenis įvairiais skerspjūviais gauti rezultatai atskleidžia įvairias priežąstis, dėl kurių atsiranda šie skirtumai. Darbo tikslas yra parodyti, kad Vilniaus vairuotojai vairuoja geriau, nei kitų miestų vairuotojai ir sudaryti regresiją, kuri leis geriau suprasti, kaip ekonominiai, socialiniai ir politiniai veiksniai veikia įskaitinių eismo įvykių skaičių Lietuvoje.
+Darbe nagrinėjami 2003-2015 metais registruoti įskaitiniai eismo įvykiai Lietuvos keliuose. Duomenyse pastebimi egzistuojantys ryškūs eismo įvykių skirtumai didžiuosiuose Lietuvos miestuose bei staigūs pokyčiai skirtingais laikotarpiais. Nagrinėjant duomenis įvairiais skerspjūviais gauti rezultatai atskleidžia įvairias priežąstis, dėl kurių atsiranda šie skirtumai. Darbo tikslas yra nustatyti ar Vilniaus m. sav. vairuotojai vairuoja geriau, nei kitų miestų vairuotojai. Sudaroma regresiją, kuri leis geriau suprasti, kaip ekonominiai, socialiniai ir politiniai veiksniai veikia įskaitinių eismo įvykių skaičių Lietuvoje.
 
 
 \section{Įvadas}
@@ -388,7 +388,7 @@ mod<- lm(Keliu_eismo_ivykiu_skaicius~Gyventoju_tankumas+Auto_sk_1k_gyv+Islaidos_
 
 \section{Išvados}
 
-Duomenyse stebimas ryškus Vilniaus m. sav. pranašumas prieš kitus didžiuosius Lietuvos miestus. Įvykių skaičius Vilniaus mieste yra stabilesnis, kreivė taip staigiai nešokinėja. Pritaikius tam tikras priemones įvykių skaičius daug greičiau sumažėjo, priemonių poveikis buvo efektyvesnis.
+Duomenyse pastebi ryškūs skirtumai tarp Vilniaus m. sav. ir Kauno m. sav., kiti didieji Lietuvos miestai yra panašūs ir jų duomenys yra išsidėstę ties Vilniaus m. sav. ir Kauno m. sav. sumos vidurkiu. Įvykių skaičius Vilniaus mieste yra stabilesnis, kreivė taip staigiai nešokinėja. Pritaikius tam tikras priemones įvykių skaičius daug greičiau sumažėjo, priemonių poveikis buvo efektyvesnis, tačiau Vilniaus miestas susiduria su daug didesne neblaivių vairuotojų dalimi.
 
 \newpage
 
