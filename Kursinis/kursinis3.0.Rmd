@@ -40,7 +40,7 @@ output:
 \section{Santrauka}
 \end{center}
 
-Darbe nagrinėjami 2003-2015 metais registruoti įskaitiniai eismo įvykiai Lietuvos keliuose. Duomenyse pastebimi egzistuojantys ryškūs eismo įvykių skirtumai didžiuosiuose Lietuvos miestuose bei staigūs pokyčiai skirtingais laikotarpiais. Nagrinėjant duomenis įvairiais skerspjūviais gauti rezultatai atskleidžia įvairias priežąstis, dėl kurių atsiranda šie skirtumai. Darbo tikslas yra nustatyti ar Vilniaus m. sav. vairuotojai vairuoja geriau, nei kitų miestų vairuotojai. Sudaroma regresiją, kuri leis geriau suprasti, kaip ekonominiai, socialiniai ir politiniai veiksniai veikia įskaitinių eismo įvykių skaičių Lietuvoje.
+Darbe nagrinėjami 2003-2015 metais registruoti įskaitiniai eismo įvykiai Lietuvos keliuose. Duomenyse pastebimi egzistuojantys ryškūs eismo įvykių skirtumai didžiuosiuose Lietuvos miestuose bei stipri fliuktuacija skirtingais laikotarpiais. Nagrinėjant duomenis įvairiais skerspjūviais gauti rezultatai atskleidžia įvairias priežąstis, dėl kurių atsiranda šie skirtumai. Darbo tikslas yra parodyti, kad Vilniaus vairuotojai vairuoja geriau, nei kitų miestų vairuotojai ir sudaryti regresiją, kuri leis geriau suprasti, kaip ekonominiai, socialiniai ir politiniai veiksniai veikia įskaitinių eismo įvykių skaičių Lietuvoje.
 
 
 \section{Įvadas}
@@ -52,98 +52,95 @@ library(dplyr)
 ```
 
 
-
 ```{r, message=F, echo=F}
-rawdata <- read.csv2("2003-2015.csv", header = T)
+#Duomenu nuskaitymas
+rawdata <- read.csv2("2003-2015koreg.csv", header = T)
 gyventojai <- read.csv2("gyventojai.csv", header = T, skip = 1)
 kor <- read.csv2("koreliacijos.csv", header = T)
 ```
 
 
+```{r, tidy = T, message=F, echo=F}
+#Sukuriamas amziaus kintamasis (is gimimo datos)
+Amzius <- as.numeric(format(Sys.Date(), format="%Y")) - as.numeric(format(as.Date(rawdata$Gimimo_data, format="%Y"), format = "%Y"))
+data <- cbind(rawdata, Amzius)
+```
+
+
+```{r, tidy = T, message=F, echo=F}
+#data[data$Blaivumas %in% c("Apsvaiges nuo narkotiniu, psichotropiniu ar kitu psichika veikianciu medziagu", "Atsisake buti patikrintas", "Neblaivus"), "Blaivumas"] <- "Neblaivus"
+#data[data$Blaivumas %in% c("Neapsvaiges", "Blaivus"), "Blaivumas"] <- "Blaivus"
+#data$Blaivumas <- factor(data$Blaivumas)
+table(data$Blaivumas)
+```
+
+
+```{r, message=F, echo=F}
+#data[data[, "Meteorologines_salygos"] == "Lijundra", "Meteorologines_salygos"] <- "Lietus"
+#data[data[, "Meteorologines_salygos"] == "Puga", "Meteorologines_salygos"] <- "Sniegas, krusa"
+#data$Meteorologines_salygos <- factor(data$Meteorologines_salygos)
+table(data$Meteorologines_salygos)
+```
+
+
+```{r, tidy = T, message=F, echo=F}
+#Pasalinamos NA reiksmes
+salinamieji <- c("Lytis", "Blaivumas")
+data <- data[complete.cases(data[salinamieji]),]
+sapply(lapply(data, is.na), sum)
+```
 
 ```{r, tidy = T, message=F, echo=F}
 miestai <- c("Kauno m. sav.", "Klaipedos m. sav.","Panevezio m. sav.", "Siauliu m. sav.", "Vilniaus m. sav.")
-data <- subset(rawdata, Vieta %in% miestai)
+ndata <- subset(data, Vieta %in% miestai)
 ```
 
 
 ```{r, tidy = T, message=F, echo=F}
-Amzius <- as.numeric(format(Sys.Date(), format="%Y")) - as.numeric(format(as.Date(data$Gimimo_data, format="%Y"), format = "%Y"))
-data <- cbind(data, Amzius)
-```
+#Agreguota lentele su Lietuvos Respublikos rodmenimis
 
+by_month <- group_by(data, format(as.Date(data$Data, format="%Y-%m-%d"),"%Y-%m"))
+ltdata <- cbind(summarise(by_month, sum(Kaltas), sum(Dalyviu_skaicius), sum(Suzeistu_skaicius), sum(Zuvusiu_skaicius)), "Lietuvos Respublika")
+colnames(ltdata) <- list("Data", "Ivykiai", "Dalyviai", "Suzeisti", "Zuve", "Vieta")
+ltdata <- ltdata[,c("Data", "Vieta", "Ivykiai", "Dalyviai", "Suzeisti", "Zuve")]
 
-```{r, message=F, echo=F}
-#sum(is.na(data$Stazas))
-#sum(is.na(data$Amzius))
-#cor(data$Amzius, data$Stazas, use = "pairwise.complete.obs")
-```
+by_monthplace <- group_by(ndata, format(as.Date(ndata$Data, format="%Y-%m-%d"),"%Y-%m"), Vieta)
+miestudata <- summarise(by_monthplace, sum(Kaltas), sum(Dalyviu_skaicius), sum(Suzeistu_skaicius), sum(Zuvusiu_skaicius))
+colnames(miestudata) <- list("Data", "Vieta", "Ivykiai", "Dalyviai", "Suzeisti", "Zuve")
 
-
-```{r, tidy = T, message=F, echo=F}
-data[data[, "Blaivumas"] %in% c("Apsvaiges nuo narkotiniu, psichotropiniu ar kitu psichika veikianciu medziagu", "Atsisake buti patikrintas", "Neblaivus"), "Blaivumas"] <- "Neblaivus"
-data$Blaivumas <- factor(data$Blaivumas)
-#table(data$Blaivumas)
-```
-
-
-```{r, message=F, echo=F}
-data[data[, "Meteorologines_salygos"] == "Lijundra", "Meteorologines_salygos"] <- "Lietus"
-data[data[, "Meteorologines_salygos"] == "Puga", "Meteorologines_salygos"] <- "Sniegas, krusa"
-data$Meteorologines_salygos <- factor(data$Meteorologines_salygos)
-#table(data$Meteorologines_salygos)
-```
-
-
-```{r, tidy = T, message=F, echo=F}
-salinamieji <- c("Lytis", "Blaivumas")
-ndata <- data[complete.cases(data[salinamieji]),]
-#sapply(lapply(ndata, is.na), sum)
-```
-
-
-```{r, message=F, echo=F}
-tukst <- gyventojai[,3]/1000
-gyventojai <- cbind(gyventojai, tukst)
-```
-
-#Įvykių sk. 1000-iui gyventojų didžiausiuose Lietuvos miestuose grafikas.
-
-```{r, tidy = T, message=F, echo=F}
-by_month <- group_by(data, format(as.Date(data$Data, format="%Y-%m-%d"),"%Y-%m"), Vieta)
-agreguoti <- summarise(by_month, sum(Kaltas), sum(Dalyviu_skaicius), sum(Suzeistu_skaicius), sum(Zuvusiu_skaicius))
-colnames(agreguoti) <- list("Data", "Vieta", "Ivykiai", "Dalyviai", "Suzeisti", "Zuve")
+agreguoti <- rbind(as.matrix(ltdata), as.matrix(miestudata))
 ```
 
 ```{r, message=F, echo=F}
+#Lentele tukst gyv
 ivykiusk <- function(i)
-  ts(agreguoti[agreguoti$Vieta == i, "Ivykiai"], start=c(2003,1), frequency = 12)
+  ts(as.numeric(agreguoti[agreguoti[,"Vieta"] == i, "Ivykiai"]), start=c(2003,1), frequency = 12)
 
 gyvsk <- function(i)
   ts(rep(gyventojai[gyventojai$Vieta == i, "Visi"], each = 12), start = c(2003,1), frequency = 12)
 
-ivykiai <- sapply(miestai, ivykiusk)
-names(ivykiai)<-sprintf(miestai)
-gyven <- sapply(miestai, gyvsk)
-names(gyven)<-sprintf(miestai)
+ivykiai <- sapply(c(miestai, "Lietuvos Respublika"), ivykiusk)
+names(ivykiai)<-sprintf(c(miestai, "Lietuvos Respublika"))
+gyven <- sapply(c(miestai, "Lietuvos Respublika"), gyvsk)
+names(gyven)<-sprintf(c(miestai, "Lietuvos Respublika"))
 
 tukst <- function(i)
-  ivykiai[,i] * 1000 / gyven[,i]
+  ivykiai[,i] * 100000 / gyven[,i]
 
-tukstgyv <- ts(sapply(miestai, tukst), start = c(2003,1), frequency = 12)
-names(tukstgyv)<-sprintf(miestai)
-
+tukstgyv <- ts(sapply(c(miestai, "Lietuvos Respublika"), tukst), start = c(2003,1), frequency = 12)
+names(tukstgyv)<-sprintf(c(miestai, "Lietuvos Respublika"))
 ```
 
 
 ```{r, echo=F}
-plot(0, type = "n", xlim = c(2003,2015), ylim = c(0,0.3), yaxs="i", xaxs="i", main = "Įvykių skaičius 1000-iui gyventojų", ylab = "Įvykių sk. 1000 gyv.", xlab = "Laikas", axes=F)
+#Grafikas tukst gyv.
+plot(0, type = "n", xlim = c(2003,2015), ylim = c(0,30), yaxs="i", xaxs="i", main = "Įvykių skaičius 100000-iui gyventojų", ylab = "Įvykių sk. 1000 gyv.", xlab = "Laikas", axes=F)
 par(xaxp=c(2003, 2015, 12))
 axis(1)
 axis(2)
-for(i in 1:length(miestai))
+for(i in 1:6)
   lines(stl(tukstgyv[,i], s.window = "periodic")$time.series[,2], col = i, lwd = 1)
-legend("topright", col = c(1:5), lty = 1, lwd = 1, legend = c("Kauno m. sav.", "Klaipėdos m. sav.", "Panevėžio m. sav.", "Šiaulių m. sav.", "Vilniaus m. sav."), pt.cex = 1, cex = 0.6, text.width = 2)
+legend("topright", col = c(1:6), lty = 1, lwd = 1, legend = c("Kauno m. sav.", "Klaipėdos m. sav.", "Panevėžio m. sav.", "Šiaulių m. sav.", "Vilniaus m. sav.", "Lietuvos Respublika"), pt.cex = 1, cex = 0.6, text.width = 2)
 ```
 
 Grafike matomas eismo įvykių 1000-iui gyventojų augimas 2003-2007 metais, šiame laikotarpyje įvykių skaičius vidutiniškai padidėjo apie 4 procentinius punktus. 2007 metais įvyko lūžis ir iki 2011 metų įvykių skaičius visuose Lietuvos didžiuosiuose miestose mažėjo. Likusiame laikotarpyje įvykių skaičius padidėjo apie 3 procentinius punktus ir fliuktavo panašiame lygyje. 
@@ -161,7 +158,7 @@ Panevežio m. sav. 2003-2007 metais įvykių skaičius padidėja 5 procentiniais
 Ryškiausi skirtumai pastebimi tarp Vilniaus ir Kauno miesto savivaldybių. Vilnius pasižymėjo mažesniu įvykių augimu bei staigesniu ir didesniu įvykių sumažėjimu. Tuo tarpu Kauno miestas judėjo priešinga kryptimi: įvykių skaičius išaugo, o tolesnis jų mažėjimas nėra toks spartus. Kiti nagrinėjami miestai yra labai panašūs ir nesiskiria vienas nuo kito.
 
 
-```{r, message=F, echo=F}
+```{r, message=F, echo=F, eval=F}
 #kintamuju kurimas
 
 neblaivus <- ndata$Blaivumas == "Neblaivus"
@@ -182,6 +179,7 @@ kintamieji <- c("Neblaivus", "Naktis", "Moteris", "Slapia_danga", "Negiedra")
 #Proporciju lenteliu grupavimas by:
 
 by_metmenviet <- group_by(ndata, format(as.Date(ndata$Data, format="%Y-%m-%d"), "%Y-%m"), Vieta)
+by_metmenvietlt <- group_by(data, format(as.Date(ndata$Data, format="%Y-%m-%d"), "%Y-%m"), Vieta)
 by_metviet <- group_by(ndata, format(as.Date(ndata$Data, format="%Y-%m-%d"), "%Y"), Vieta)
 by_met <- group_by(ndata, format(as.Date(ndata$Data, format="%Y-%m-%d"), "%Y"))
 by_men <- group_by(ndata, format(as.Date(ndata$Data, format="%Y-%m-%d"), "%m"))
@@ -223,7 +221,7 @@ par(xaxp=c(2003, 2015, 12))
 axis(1)
 axis(2, at = seq(0,1,by=.1), labels = paste(100*seq(0,1,by=.1), "%"))
 for(i in 1:length(miestai))
-lines(stl(ts((lent_neblaivus[,i]), start = c(2003,1), frequency = 12), s.window = "periodic")$time.series[,2], col = i, lwd = 1)
+lines(stl(ts(lent_neblaivus[,i], start = c(2003,1), frequency = 12), s.window = "periodic")$time.series[,2], col = i, lwd = 1)
 legend("topleft", col = c(1:5), lty = 1, lwd = 1, legend = c("Kauno m. sav.", "Klaipėdos m. sav.", "Panevėžio m. sav.", "Šiaulių m. sav.", "Vilniaus m. sav."), cex = 0.5)
 ```
 
@@ -289,6 +287,12 @@ legend("topleft", col = c(1:5), lty = 1, lwd = 1, legend = c("Kauno m. sav.", "K
 
 Vilniaus mieste negiedru oru eismo įvykių skaičius yra stabilus, dėl to galima būtų manyti, kad tai neturi žymaus poveikio. Dideli svyravimai mažesniuose miestuose kelia įtarimų, kad oro sąlygos daug labiau gali veikti vairuotojų vairavimą.
 
+```{r}
+#Detect change point
+detectChangePointBatch(tukstgyv[,5], cpmType = )
+```
+
+
 \newpage
 ```{r, echo=F}
 #blokuoti anova
@@ -298,6 +302,8 @@ miestas <- as.factor(rep(rep(miestai), 13))
 #data.frame(metai, miestas, prop_metviet$Neblaivus)
 
 neblaivumas <- prop_metviet$Neblaivus
+shapiro.test(neblaivumas)#patikrinam normaluma
+
 mod1 <- aov(neblaivumas ~ miestas)
 anova(mod1)
 
@@ -311,6 +317,8 @@ Neblaivių vairuotuojų dalis, kurie sukėlė eismo įvykius Kauno m. sav. yra s
 \newpage
 ```{r, echo=F}
 nakties_metas <- prop_metviet$Naktis
+shapiro.test(nakties_metas)
+
 mod2 <- aov(nakties_metas ~ miestas)
 anova(mod2)
 
@@ -323,6 +331,8 @@ Tamsiu paros metu įvykusių įskaitinių eismo įvykių dalis Vilniaus m. sav. 
 \newpage
 ```{r, echo=F}
 moterys <- prop_metviet$Moteris
+shapiro.test(moterys)
+
 mod3 <- aov(moterys ~ miestas)
 anova(mod3)
 ```
@@ -332,6 +342,8 @@ Naudodami ANOVA nustatome, kad nėra statistiškai reikšmingų skirtumų tarp m
 \newpage
 ```{r, echo=F}
 slapia_danga <- prop_metviet$Slapia_danga
+shapiro.test(slapia_danga)
+
 mod4 <- aov(slapia_danga ~ miestas)
 anova(mod4)
 ```
@@ -341,6 +353,8 @@ Naudodami ANOVA nustatome, kad nėra statistiškai reikšmingų skirtumų tarp m
 \newpage
 ```{r, echo=F}
 negiedra <- prop_metviet$Negiedra
+shapiro.test(negiedra)
+
 mod5 <- aov(negiedra ~ miestas)
 anova(mod5)
 
@@ -349,6 +363,13 @@ TukeyHSD(mod5)$miestas[,c(1,4)]
 
 Naudodami ANOVA nustatome, kad yra statistiškai reikšmingų skirtumų tarp miestų.
 Įvykusių įskaitinių eismo įvykių dalis esant negiedram dangui Vilniaus m. sav. yra statistiškai reikšmingai didesnė negu Šiaulių m. sav.
+
+
+```{r}
+#zuvusiuju modelio sudarymas
+
+mod <- lm()
+```
 
 =====================================================================
 
@@ -377,18 +398,132 @@ plot(ser)
 ```
 
 
-# Įvykių skaičiaus modeliavimas
 
-```{r, eval=F, message=F, echo=F}
-mod<- lm(Keliu_eismo_ivykiu_skaicius~Gyventoju_tankumas+Auto_sk_1k_gyv+Islaidos_keliams_mln_eur+vidutine_95_bezino_kaina+vidutine_dyzelino_kaina+gryno_alko_suvartojimas_gyventojui_litrais,data= kor)
+# Eismo įvykių regresija.
+
+```{r, include=FALSE,message=F, echo=F}
+library(car)
+library(lmtest)
+library(MASS)
+regresijaraw<- read.csv2("menesiniai.csv", header = T, skip = 1)
+modelis<- lm(ivykiu_skaicius~alkoholiniai_gerimai+transporto_priemoniu_isigijimas+asmeniniu_transporto_priemoniu_eksploatacija+transporto_paslaugos+svietimas+transporto_priemoniu_draudimas+benzinas_95+dyzelinas+pirma_karta_registruotos_priemones,data = regresijaraw)
+
+summary(modelis)
+
+### Tikriname isskirtis
+qqPlot(modelis, main="QQ Plot") 
+#  Is grafiko reiksmingu isskirciu duomenyse nematome.
+outlierTest(modelis)
+# rodo kaip isskirti 50 eilute
+
+
+
+### Influential Observations
+# added variable plots 
+av.plots(modelis)
+cutoff <- 4/((nrow(regresijaraw)-length(modelis$coefficients)-2)) 
+plot(modelis, which=4, cook.levels=cutoff)
+# 50 ir 166 eilutes duomenys atrodo INFUENTIAL  del to reiktu panagrineti (39 labai panasus i daugeli kitu)
+# galima riektu 50 eilute pasalinti, nes ji rodokaip ir kaip isskirtis
+
+# Influence Plot 
+influencePlot(modelis)
+#pateikia 50 eilute irgi
+
+### Salinsime duomenyse 50 eilute
+
+regresija<-regresijaraw[-50,]
+#pridedame dyzelio ir bedzino vidutine kaina
+kuras<-((regresija[,9]+regresija[,10])/2)
+regresijavid <- cbind(regresija, kuras)
+modelis2<- lm(ivykiu_skaicius~alkoholiniai_gerimai+transporto_priemoniu_isigijimas+asmeniniu_transporto_priemoniu_eksploatacija+transporto_paslaugos+svietimas+transporto_priemoniu_draudimas+benzinas_95+dyzelinas+pirma_karta_registruotos_priemones,data = regresijavid)
+summary(modelis2)
+
+###HETEROSKEDASTISKUMAS
+ncvTest(modelis2) # p-value< 0.05 todel atmetame H0 hipoteze modelis Heteroskedastina, taikysime whit'o korekcija
+spreadLevelPlot(modelis2)
+coeftest(modelis, vcov= hccm(modelis2))
+#pasalinkime nereiksmingus kintamuosius
+
+modelis3<-lm(ivykiu_skaicius~alkoholiniai_gerimai+asmeniniu_transporto_priemoniu_eksploatacija+transporto_priemoniu_draudimas+benzinas_95+pirma_karta_registruotos_priemones,data = regresijavid)
+
+summary(modelis3)
+# Multikolinearumas
+vif(modelis3) # variance inflation factors 
+cor(regresija[,-1])
+#kadangi egzistuoja multi kolianiarusmas ir ekplotacijos kaina stipriai koreliuoja su kitais kintamaisiais, ji pasalinome
+modelis4<-lm(ivykiu_skaicius~alkoholiniai_gerimai+transporto_priemoniu_draudimas+benzinas_95+pirma_karta_registruotos_priemones,data = regresijavid)
+summary(modelis4)
+vif(modelis4) # multikolinearumo nebera.
+
+#Jeigu modelio kintamieji turi multikolinearumo problemą, galimos regresijos pasekmės:
+#sulaukiame, kad kintamieji yra nereikšmingi, nors žinome, kad jų bendras poveikis tikrai nėra nulinis;
+#koreliuotų kintamųjų įgyti koeficientai - priešingų reikšmių, t.y. jie vienas kitą kompensuoja. Todėl prarandama #aiški interpretacija.
+#modelio interpretacija tampa neaiški: jei koreliuotą kintamąjį padidiname vientetu, nebegalime tiksliai nusakyti, #kaip keičiasi priklausomas kintamasis.
+
+
+
+### liekanu normalumas
+# qq plot for studentized resid
+qqPlot(modelis4, main="QQ Plot")
+# distribution of studentized residuals
+sresid <- studres(modelis4) 
+hist(sresid, freq=FALSE, 
+   main="Distribution of Studentized Residuals")
+xfit<-seq(min(sresid),max(sresid),length=40) 
+yfit<-dnorm(xfit) 
+lines(xfit, yfit)
+#liekanos pasiskirsciusios normaliai.
+
+### BANDYSIME TOBULINTI MODELI4
+################################################################
+
+
+mod<-lm(ivykiu_skaicius~alkoholiniai_gerimai+transporto_priemoniu_draudimas+log(kuras)+I((pirma_karta_registruotos_priemones)^-1),data = regresijavid)
+summary(mod)
+
+
+
+ncvTest(mod)
+coeftest(mod, vcov= hccm(mod)) #visi kintamieji reiksmingi
+
+ausresid <- studres(mod) 
+hist(sresid, freq=FALSE, 
+   main="Distribution of Studentized Residuals")
+xfit<-seq(min(sresid),max(sresid),length=40) 
+yfit<-dnorm(xfit) 
+lines(xfit, yfit)
+#liekanos pasiskirsciusios normaliai.
+shapiro.test(mod$res) 
+#Pagal shapiro.test p-value>0.05 priimame H0: liekanų paklaidos yra normalios.
+plot(mod$residuals,type='l')
+
+
+### Autokoreliacija
+durbinWatsonTest(mod)
+acf(mod$residuals)
+#Kadangi testo p-value<0.05, H0: nėra koreliacijos tarp liekanų, atmetame. LIekanos autoroleiuotos ta matome ir acf
+#Jeigu testo nulinė hipotezė atmetama - įverčiai vis dar yra nepaslinkti ir suderinti, tačiau tampa #nebeefektyvūs. Pagrindinė liekanų autokoreliacijos problema - netikslumai prognozuojant.
 ```
+
+Modeliuojama regresija iš mėnesinių 2003-2016m. laikotarpio duomenų. Ši regresija suteiks daugiau informacijos apie tam tikrus išorinius kintamuosius, kurie nėra susije su eismo įvykiais. Gauti reikšmingų kintamųjų įverčiai pateikti lentelėje. Modelis atitinka heteroskedastiškumo, multikolinearumo ir normalaus liekanų pasiskirstimo sąlygas, tačiau modelio liekanose egzistuoja autokoreliacijos problema, todėl šio modelio nerekomenduojama pasitelkti kuriant eismo įvykių prognozes. Modelio $R^2$ yra pakankamai didelis, nepriklausomi kintamieji paaiškina apie 78% priklausomojo kintamojo reikšmių. 
+
+```{r,message=F, echo=F}
+#library(stargazer)
+#stargazer(mod, title="Regression Results", align=TRUE)
+library(knitr)
+kable(summary(mod)$coef, digits=5)
+```
+
+$y=1331.97-10.41 * Alkoholiniai gėrimai +1.29* Trasporto priemonių draudimas -140.94* log(Kuras) -1652212.66 * \frac{1}{Pirmą kartą registuotos priemonės}$ 
+
 
 
 \newpage
 
 \section{Išvados}
 
-Duomenyse pastebi ryškūs skirtumai tarp Vilniaus m. sav. ir Kauno m. sav., kiti didieji Lietuvos miestai yra panašūs ir jų duomenys yra išsidėstę ties Vilniaus m. sav. ir Kauno m. sav. sumos vidurkiu. Įvykių skaičius Vilniaus mieste yra stabilesnis, kreivė taip staigiai nešokinėja. Pritaikius tam tikras priemones įvykių skaičius daug greičiau sumažėjo, priemonių poveikis buvo efektyvesnis, tačiau Vilniaus miestas susiduria su daug didesne neblaivių vairuotojų dalimi.
+Duomenyse stebimas ryškus Vilniaus m. sav. pranašumas prieš kitus didžiuosius Lietuvos miestus. Įvykių skaičius Vilniaus mieste yra stabilesnis, kreivė taip staigiai nešokinėja. Pritaikius tam tikras priemones įvykių skaičius daug greičiau sumažėjo, priemonių poveikis buvo efektyvesnis.
 
 \newpage
 
